@@ -1,6 +1,5 @@
 package com.launchacademy.giantleap.models;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,21 +21,19 @@ import lombok.Setter;
 public class Review {
 
   @Id
-  @SequenceGenerator(name="review_generator", sequenceName="reviews_id_seq", allocationSize = 1)
-  @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="review_generator")
-  @Column(name="id", nullable=false, unique=true)
+  @SequenceGenerator(name = "review_generator", sequenceName = "reviews_id_seq", allocationSize = 1)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "review_generator")
+  @Column(name = "id", nullable = false, unique = true)
   private Integer id;
 
-  @ManyToOne(cascade = CascadeType.MERGE)
+  @ManyToOne
   @JoinColumn(name = "character_id")
-  private Integer characterId;
+  private MarvelCharacter marvelCharacter;
 
-  @Column(name="rating", nullable = false)
+  @Column(name = "rating", nullable = false)
   private Integer rating;
 
-  @Column(name="review", nullable = false)
+  @Column(name = "review", nullable = false)
   private String review;
-
-
 
 }
