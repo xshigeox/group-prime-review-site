@@ -2,6 +2,7 @@ CREATE TABLE characters (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   bio TEXT NOT NULL,
+  img_url VARCHAR(255) NOT NULL,
   durability INTEGER NOT NULL CHECK (durability > 0 AND durability < 8),
   energy INTEGER NOT NULL CHECK (energy > 0 AND energy <8),
   fighting_skills INTEGER NOT NULL CHECK (fighting_skills > 0 AND fighting_skills <8),
