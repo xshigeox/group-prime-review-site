@@ -1,4 +1,4 @@
-CREATE TABLE characters (
+CREATE TABLE marvel_characters (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   bio TEXT NOT NULL,

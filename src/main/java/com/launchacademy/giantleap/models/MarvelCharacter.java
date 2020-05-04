@@ -25,7 +25,7 @@ import org.hibernate.validator.constraints.Range;
 public class MarvelCharacter {
 
   @Id
-  @SequenceGenerator(name = "marvel_character_generator", sequenceName = "characters_id_seq", allocationSize = 1)
+  @SequenceGenerator(name = "marvel_character_generator", sequenceName = "marvel_characters_id_seq", allocationSize = 1)
   @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "marvel_character_generator")
   @Column(name = "id", nullable = false, unique = true)
   private Integer id;
