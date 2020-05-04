@@ -18,7 +18,7 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.Range;
 
 @Entity
-@Table(name = "characters")
+@Table(name = "marvel_characters")
 @Setter
 @Getter
 @NoArgsConstructor
