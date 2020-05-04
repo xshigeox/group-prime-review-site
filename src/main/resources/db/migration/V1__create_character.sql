@@ -9,7 +9,7 @@ CREATE TABLE characters (
   intelligence INTEGER NOT NULL CHECK (intelligence > 0 AND intelligence < 8),
   speed INTEGER NOT NULL CHECK (speed > 0 AND speed < 8),
   strength INTEGER NOT NULL CHECK (strength > 0 AND strength < 8),
-  height float,
+  height FLOAT,
   weight INTEGER,
   gender VARCHAR(255),
   eye_color VARCHAR(255),

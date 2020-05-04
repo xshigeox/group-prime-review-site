@@ -22,7 +22,7 @@ import org.hibernate.validator.constraints.Range;
 @Setter
 @Getter
 @NoArgsConstructor
-public class Character {
+public class MarvelCharacter {
 
   @Id
   @SequenceGenerator(name = "character_generator", sequenceName = "characters_id_seq", allocationSize = 1)
