@@ -1,7 +1,7 @@
 package com.launchacademy.giantleap.models;
 
+import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,13 +25,13 @@ import org.hibernate.validator.constraints.Range;
 public class Character {
 
   @Id
-  @SequenceGenerator(name="character_generator", sequenceName="characters_id_seq", allocationSize = 1)
-  @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="character_generator")
-  @Column(name="id", nullable=false, unique=true)
+  @SequenceGenerator(name = "character_generator", sequenceName = "characters_id_seq", allocationSize = 1)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "character_generator")
+  @Column(name = "id", nullable = false, unique = true)
   private Integer id;
 
-  @OneToMany(mappedBy = "characterId", cascade= CascadeType.ALL)
-  private List<Review> characterId;
+  @OneToMany(mappedBy = "review")
+  private List<Review> reviews = new ArrayList<>();
 
   @NotEmpty
   @Column(name = "name", nullable = false)
@@ -45,38 +45,38 @@ public class Character {
   @Column(name = "img_url", nullable = false)
   private String imgUrl;
 
-  @Range(min=1, max=7)
+  @Range(min = 1, max = 7)
   @NotNull
   @Column(name = "durability", nullable = false)
   private Integer durability;
 
-  @Range(min=1, max=7)
+  @Range(min = 1, max = 7)
   @NotNull
   @Column(name = "energy", nullable = false)
   private Integer energy;
 
-  @Range(min=1, max=7)
+  @Range(min = 1, max = 7)
   @NotNull
   @Column(name = "fighting_skills", nullable = false)
   private Integer fightingSkills;
 
-  @Range(min=1, max=7)
+  @Range(min = 1, max = 7)
   @NotNull
   @Column(name = "intelligence", nullable = false)
   private Integer intelligence;
 
-  @Range(min=1, max=7)
+  @Range(min = 1, max = 7)
   @NotNull
   @Column(name = "speed", nullable = false)
   private Integer speed;
 
-  @Range(min=1, max=7)
+  @Range(min = 1, max = 7)
   @NotNull
   @Column(name = "strength", nullable = false)
   private Integer strength;
 
   @Column(name = "height")
-  private Float height;
+  private Double height;
 
   @Column(name = "weight")
   private Integer weight;
