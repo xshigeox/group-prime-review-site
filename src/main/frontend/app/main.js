@@ -1,9 +1,5 @@
-import React, { useEffect, useState } from "react"
-import ReactDom from "react-dom"
-import MarvelCharacterShowContainer from "./components/MarvelCharacterShowContainer"
+import React from "react"
+import ReactDOM from "react-dom"
+import App from "./App"
 
-const App = (props) => {
-  return <MarvelCharacterShowContainer />
-}
-
-ReactDom.render(<App />, document.getElementById("app"))
+ReactDOM.render(<App />, document.getElementById("app"))

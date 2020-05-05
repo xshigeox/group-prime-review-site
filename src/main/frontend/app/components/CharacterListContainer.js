@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react"
-import CharacterInfo from "./CharacterInfo"
+import React, { useState, useEffect } from "react"
+import CharacterListPage from "./CharacterListPage"
 
-const MarvelCharacterShowContainer = (props) => {
-  const [marvelCharacters, setMarvelCharacters] = useState([])
+const CharacterListContainer = (props) => {
+  const [characters, setCharacters] = useState([])
   useEffect(() => {
     fetch("/api/v1/characters")
       .then((response) => {
@@ -17,18 +17,18 @@ const MarvelCharacterShowContainer = (props) => {
         return result.json()
       })
       .then((json) => {
-        setMarvelCharacters(json)
+        setCharacters(json)
       })
       .catch((error) => {
         console.log(error)
       })
   }, [])
 
-  const listOfCharacters = marvelCharacters.map((character) => {
-    return <CharacterInfo key={character.id} character={character} />
+  const characterList = characters.map((character) => {
+    return <CharacterListPage character={character} key={character.id} />
   })
 
-  return <div>{listOfCharacters}</div>
+  return <div>{characterList}</div>
 }
 
-export default MarvelCharacterShowContainer
+export default CharacterListContainer
