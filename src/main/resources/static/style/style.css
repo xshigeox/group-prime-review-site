@@ -1,0 +1,20 @@
+@font-face {
+  font-family: "OPTIBankGothic-Light" ;
+  src: url("fonts/OPTIBankGothic-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "actionmen1_1";
+  src: url(fonts/actionmen1_1.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "xfighters";
+  src: url(fonts/xfighters.ttf) format("truetype");
+}
+
+body {
+  font-family: "OPTIBankGothic-Light";
+  background-color: whitesmoke;
+}
+
