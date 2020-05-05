@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react"
 import ReactDom from "react-dom"
+import MarvelCharacterShowContainer from "./components/MarvelCharacterShowContainer"
 
 const App = (props) => {
-  return <h1>Hello from React</h1>
+  return <MarvelCharacterShowContainer />
 }
 
 ReactDom.render(<App />, document.getElementById("app"))
