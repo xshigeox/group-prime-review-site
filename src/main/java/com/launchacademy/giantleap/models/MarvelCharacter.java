@@ -1,9 +1,10 @@
 package com.launchacademy.giantleap.models;
 
-import java.util.ArrayList;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,8 +31,9 @@ public class MarvelCharacter {
   @Column(name = "id", nullable = false, unique = true)
   private Integer id;
 
-  @OneToMany(mappedBy = "review")
-  private List<Review> reviews = new ArrayList<>();
+  @OneToMany(mappedBy = "marvelCharacter", fetch = FetchType.LAZY)
+  @JsonIgnoreProperties("marvelCharacter")
+  private List<Review> reviews;
 
   @NotEmpty
   @Column(name = "name", nullable = false)

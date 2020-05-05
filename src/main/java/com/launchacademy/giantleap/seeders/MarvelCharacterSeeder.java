@@ -61,7 +61,7 @@ public class MarvelCharacterSeeder {
       jane.setIntelligence(2);
       jane.setSpeed(7);
       jane.setStrength(7);
-      jane.setHeight(5.7);
+      jane.setHeight(5.3);
       jane.setGender("Female");
       jane.setEyeColor("Blue");
       jane.setHairColor("Blond");
