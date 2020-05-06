@@ -22,12 +22,13 @@ public class MarvelCharacterSeeder {
       storm.setBio(
           "Ororo Monroe is the descendant of an ancient line of African priestesses, all of whom have white hair, blue eyes, and the potential to wield magic.");
       storm.setDurability(6);
-      storm.setEnergy(6);
-      storm.setFightingSkills(6);
-      storm.setIntelligence(6);
-      storm.setSpeed(6);
-      storm.setStrength(5);
-      storm.setHeight(5.8);
+      storm.setEnergy(5);
+      storm.setFightingSkills(4);
+      storm.setIntelligence(2);
+      storm.setSpeed(3);
+      storm.setStrength(2);
+      storm.setHeight(5.11);
+      storm.setWeight(145);
       storm.setGender("Female");
       storm.setEyeColor("Brown");
       storm.setHairColor("White");
