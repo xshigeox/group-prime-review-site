@@ -8,7 +8,9 @@ const NewReviewForm = (props) => {
     const [newReview, setNewReview] = useState({
         rating:"",
         review:"",
+        marvelCharacter: `${props.id}`
     })
+
     const [errors, setErrors] = useState({})
     const [submitted, setSubmitted] = useState(false)
     const [reRenderShow, setToShow] = useState(false)
@@ -109,6 +111,13 @@ const NewReviewForm = (props) => {
           type="submit"
           className="button hollow topbar-responsive-button"
           value="submit"
+          />
+
+          <input
+          type="hidden"
+          name="marvelCharacter"
+          id="marvelCharacter"
+          value={props.id}
           />
         </form>
       )
