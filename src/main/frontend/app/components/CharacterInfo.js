@@ -9,7 +9,6 @@ import {
 } from "recharts"
 
 const CharacterInfo = (props) => {
-  console.log(props.character)
   const {
     name,
     bio,

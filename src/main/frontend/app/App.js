@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react"
 import { BrowserRouter, Switch, Link, Redirect, Route } from "react-router-dom"
+import { navigate } from "@reach/router"
 import CharacterListContainer from "./components/CharacterListContainer"
 import CharacterShowContainer from "./components/CharacterShowContainer"
 import NewCharacterForm from "./components/NewCharacterForm"
 import NewReviewForm from "./components/NewReviewForm"
+import Search from "./components/Search"
 
 const App = (props) => {
   const [characters, setCharacters] = useState([])
-  const [searchTerm, setSearchTerm] = useState("")
+  const [found, setFound] = useState(false)
+  const [url, setUrl] = useState("")
 
   useEffect(() => {
     fetch("/api/v1/characters")
@@ -30,20 +33,10 @@ const App = (props) => {
       })
   }, [])
 
-  const handleInputChange = (event) => {
-    setSearchTerm(event.currentTarget.value)
-  }
-
-  const onSearch = (event) => {
-    event.preventDefault()
-
-    for (let i = 0; i < characters.length; i++) {
-      if (
-        characters[i]["name"].toLowerCase().includes(searchTerm.toLowerCase())
-      ) {
-        console.log("test")
-      }
-    }
+  const search = (result) => {
+    setUrl(result)
+    setFound(true)
+    console.log(url)
   }
 
   return (
@@ -78,22 +71,7 @@ const App = (props) => {
                     </button>
                   </Link>
                 </li>
-                <li>
-                  <input
-                    type="text"
-                    placeholder="Search"
-                    value={searchTerm}
-                    onChange={handleInputChange}
-                  ></input>
-                </li>
-
-                <button
-                  type="button"
-                  className="button hollow top-bar-responsive-button"
-                  onClick={onSearch}
-                >
-                  Search
-                </button>
+                <Search search={search} characters={characters} />
               </ul>
             </div>
           </div>
@@ -111,6 +89,7 @@ const App = (props) => {
           />
           <Route exact path="/new" component={NewCharacterForm} />
           <Route exact path="/new_review" component={NewReviewForm} />
+          {found ? <Redirect to={url} /> : null}
         </Switch>
       </div>
     </BrowserRouter>
