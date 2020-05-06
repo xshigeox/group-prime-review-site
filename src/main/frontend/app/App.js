@@ -7,7 +7,6 @@ import NewCharacterForm from "./components/NewCharacterForm"
 const App = (props) => {
   const [characters, setCharacters] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
-  const [searchFound, setSearchFound] = useState(false)
 
   useEffect(() => {
     fetch("/api/v1/characters")
@@ -34,8 +33,6 @@ const App = (props) => {
     setSearchTerm(event.currentTarget.value)
   }
 
-  let redirect
-
   const onSearch = (event) => {
     event.preventDefault()
 
@@ -43,9 +40,7 @@ const App = (props) => {
       if (
         characters[i]["name"].toLowerCase().includes(searchTerm.toLowerCase())
       ) {
-        console.log(characters[i]["id"])
-        redirect = <Redirect push to={`/characters/${characters[i]["id"]}`} />
-        setSearchFound(true)
+        console.log("test")
       }
     }
   }
@@ -106,7 +101,6 @@ const App = (props) => {
 
       <div className="botton">
         <Switch>
-          {redirect}
           <Redirect exact path="/" to="/characters" />
           <Route exact path="/characters" component={CharacterListContainer} />
           <Route
