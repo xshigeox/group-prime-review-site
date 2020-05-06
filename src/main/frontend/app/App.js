@@ -2,26 +2,26 @@ import React from "react"
 import { BrowserRouter, Switch, Link, Redirect, Route } from "react-router-dom"
 import CharacterListContainer from "./components/CharacterListContainer"
 import CharacterShowContainer from "./components/CharacterShowContainer"
+import NewCharacterForm from "./components/NewCharacterForm"
 
 const App = (props) => {
   return (
     <BrowserRouter>
-
       <div className="top-links">
-        <nav class="top-bar topbar-responsive">
-          <div class="top-bar-title">
-            <Link to="/" class="topbar-responsive-logo">
+        <nav className="top-bar topbar-responsive">
+          <div className="top-bar-title">
+            <Link to="/" className="topbar-responsive-logo">
               <strong>Marvel Reviews</strong>
             </Link>
           </div>
-          <div id="topbar-responsive" class="topbar-responsive-links">
-            <div class="top-bar-right">
-              <ul class="menu simple vertical medium-horizontal">
+          <div id="topbar-responsive" className="topbar-responsive-links">
+            <div className="top-bar-right">
+              <ul className="menu simple vertical medium-horizontal">
                 <li>
-                  <Link to="/">
+                  <Link to="/new">
                     <button
                       type="button"
-                      class="button hollow topbar-responsive-button"
+                      className="button hollow topbar-responsive-button"
                     >
                       New
                     </button>
@@ -31,7 +31,7 @@ const App = (props) => {
                   <Link to="/characters">
                     <button
                       type="button"
-                      class="button hollow topbar-responsive-button"
+                      className="button hollow topbar-responsive-button"
                     >
                       Characters
                     </button>
@@ -43,7 +43,7 @@ const App = (props) => {
 
                 <button
                   type="button"
-                  class="button hollow top-bar-responsive-button"
+                  className="button hollow top-bar-responsive-button"
                 >
                   Search
                 </button>
@@ -62,6 +62,7 @@ const App = (props) => {
             path="/characters/:id"
             component={CharacterShowContainer}
           />
+          <Route exact path="/new" component={NewCharacterForm} />
         </Switch>
       </div>
     </BrowserRouter>
