@@ -13,8 +13,14 @@
   src: url(fonts/xfighters.ttf) format("truetype");
 }
 
+@font-face {
+  font-family: "actionwomen";
+  src: url("fonts/actionwomen.ttf") format("truetype");
+}
+
 body {
   font-family: "OPTIBankGothic-Light";
   background-color: whitesmoke;
+  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/000/241/296/original/beautiful-colorful-comic-book-background-illustration.jpg");
 }
 
