@@ -6,42 +6,6 @@ import CharacterShowContainer from "./components/CharacterShowContainer"
 const App = (props) => {
   return (
     <BrowserRouter>
-      {/* <div className="top-links">
-        <nav className="top-bar topbar-responsive">
-          <div className="top-bar-title">
-            <Link to={"/"} id="topbar-site-title">
-              <strong>Marvel Characters</strong>
-            </Link>
-          </div>
-
-          <div it="topbar-responsive" className="topbar-responsive-links">
-            <div className="top-bar-right">
-              <ul className="menu simple vertical medium-horizontal">
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-
-                <li>
-                  <Link to="/characters">Characters</Link>
-                </li>
-
-                <li>
-                  <Link to="/">Add Character</Link>
-                </li>
-
-                <li>
-                  <input type="search" placeholder="Search"></input>
-                </li>
-                <li>
-                  <button type="button" class="button">
-                    Search
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div> */}
 
       <div className="top-links">
         <nav class="top-bar topbar-responsive">
