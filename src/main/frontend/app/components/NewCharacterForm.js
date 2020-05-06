@@ -72,20 +72,7 @@ const NewCharacterForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    console.log(newCharacter)
-
     if (isValidForSubmission()) {
-      // const attributeFields = [
-      //   "durability, energy, fightingSkills, intelligence, speed, strength",
-      // ]
-
-      // attributeFields.forEach((attribute) => {
-      //   setNewCharacter({
-      //     ...newCharacter,
-      //     [newCharacter[attribute]]: parseInt(newCharacter[attribute]),
-      //   })
-      // })
-
       fetch("/api/v1/new", {
         credentials: "same-origin",
         method: "POST",
