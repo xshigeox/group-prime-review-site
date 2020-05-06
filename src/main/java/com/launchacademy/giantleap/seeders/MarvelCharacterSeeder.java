@@ -46,6 +46,7 @@ public class MarvelCharacterSeeder {
       colleen.setSpeed(2);
       colleen.setStrength(2);
       colleen.setHeight(5.9);
+      colleen.setWeight(135);
       colleen.setGender("Female");
       colleen.setEyeColor("Blue");
       colleen.setHairColor("Dark Red");
@@ -63,6 +64,7 @@ public class MarvelCharacterSeeder {
       jane.setSpeed(7);
       jane.setStrength(7);
       jane.setHeight(5.3);
+      jane.setWeight(118);
       jane.setGender("Female");
       jane.setEyeColor("Blue");
       jane.setHairColor("Blond");
@@ -79,7 +81,8 @@ public class MarvelCharacterSeeder {
       doom.setIntelligence(6);
       doom.setSpeed(5);
       doom.setStrength(4);
-      doom.setHeight(6.2);
+      doom.setHeight(6.7);
+      doom.setWeight(415);
       doom.setGender("Male");
       doom.setEyeColor("Brown");
       doom.setHairColor("Brown");
@@ -97,6 +100,7 @@ public class MarvelCharacterSeeder {
       pool.setSpeed(7);
       pool.setStrength(4);
       pool.setHeight(6.2);
+      pool.setWeight(210);
       pool.setGender("Male");
       pool.setEyeColor("Brown");
       pool.setHairColor("Bald, originally brown");
@@ -114,11 +118,51 @@ public class MarvelCharacterSeeder {
       task.setSpeed(2);
       task.setStrength(3);
       task.setHeight(6.2);
+      task.setWeight(220);
       task.setGender("Male");
       task.setEyeColor("Unrevealed");
       task.setHairColor("Brown");
       task.setImgUrl("https://terrigen-cdn-dev.marvel.com/content/prod/1x/173tsk_com_crd_02.jpg");
       marvelCharacters.add(task);
+
+      MarvelCharacter groot = new MarvelCharacter();
+      groot.setName("Groot");
+      groot.setBio(
+          "Hailing from the Branch Worlds’ Planet X, Groot is part of a species called Groot, so his name is also the title of his taxonomic classification. From the time he was a sapling, Groot was destined to protect the rights of the downtrodden. He campaigned for the Undergrowth, anthropomorphic animals and fungi who helped maintain Planet X’s ecosystem by performing menial tasks. Groot’s noble campaign drew the rancor of the other Groots and he ended up leaving his home world.");
+      groot.setDurability(4);
+      groot.setEnergy(3);
+      groot.setFightingSkills(4);
+      groot.setIntelligence(3);
+      groot.setSpeed(3);
+      groot.setStrength(7);
+      groot.setHeight(23.0);
+      groot.setWeight(8200);
+      groot.setGender("Male");
+      groot.setEyeColor("Yellow");
+      groot.setHairColor("None");
+      groot
+          .setImgUrl(
+              "https://www.superherodb.com/pictures2/portraits/10/050/10017.jpg?v=1398979218");
+      marvelCharacters.add(groot);
+
+      MarvelCharacter wanda = new MarvelCharacter();
+      wanda.setName("Wanda Maximoff (Scarlet Witch");
+      wanda.setBio(
+          "A powerful mutant sorceress, Wanda Maximoff has been a master of the mystical arts for both the X-Men and the Avengers.");
+      wanda.setDurability(2);
+      wanda.setEnergy(6);
+      wanda.setFightingSkills(3);
+      wanda.setIntelligence(3);
+      wanda.setSpeed(2);
+      wanda.setStrength(2);
+      wanda.setHeight(5.7);
+      wanda.setWeight(132);
+      wanda.setGender("Female");
+      wanda.setEyeColor("Blue");
+      wanda.setHairColor("Auburn");
+      wanda.setImgUrl(
+          "https://www.superherodb.com/pictures2/portraits/11/050/13086.jpg?v=1537276379");
+      marvelCharacters.add(wanda);
 
       for (MarvelCharacter marvelCharacter : marvelCharacters) {
         characterRepo.save(marvelCharacter);
