@@ -8,7 +8,7 @@ const CharacterListPage = (props) => {
     <div className="row small-up-1 medium-up-2 large-up-3 text-center">
       <Link to={`/characters/${id}`}>
         <img src={imgUrl} alt={name} height="210" width="191" />
-        <p>{name}</p>
+        <p className="ow-anywhere">{name}</p>
       </Link>
     </div>
   )
