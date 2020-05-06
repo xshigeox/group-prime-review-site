@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import { BrowserRouter, Switch, Link, Redirect, Route } from "react-router-dom"
-import { navigate } from "@reach/router"
 import CharacterListContainer from "./components/CharacterListContainer"
 import CharacterShowContainer from "./components/CharacterShowContainer"
 import NewCharacterForm from "./components/NewCharacterForm"
@@ -8,35 +7,16 @@ import NewReviewForm from "./components/NewReviewForm"
 import Search from "./components/Search"
 
 const App = (props) => {
-  const [characters, setCharacters] = useState([])
   const [found, setFound] = useState(false)
-  const [url, setUrl] = useState("")
-
-  useEffect(() => {
-    fetch("/api/v1/characters")
-      .then((response) => {
-        if (response.ok) {
-          return response
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`
-          throw new Error(errorMessage)
-        }
-      })
-      .then((result) => {
-        return result.json()
-      })
-      .then((json) => {
-        setCharacters(json)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }, [])
+  const [url, setUrl] = useState()
 
   const search = (result) => {
-    setUrl(result)
-    setFound(true)
-    console.log(url)
+    if (result) {
+      setUrl(result)
+      setFound(true)
+    } else {
+      setFound(false)
+    }
   }
 
   return (
@@ -71,7 +51,7 @@ const App = (props) => {
                     </button>
                   </Link>
                 </li>
-                <Search search={search} characters={characters} />
+                <Search search={search} />
               </ul>
             </div>
           </div>
@@ -80,8 +60,9 @@ const App = (props) => {
 
       <div className="botton">
         <Switch>
-          <Redirect exact path="/" to="/characters" />
-          <Route exact path="/characters" component={CharacterListContainer} />
+          {found ? <Redirect from="/" to={url} /> : null}
+          <Route exact path="/" component={CharacterListContainer} />
+
           <Route
             exact
             path="/characters/:id"
@@ -89,7 +70,6 @@ const App = (props) => {
           />
           <Route exact path="/new" component={NewCharacterForm} />
           <Route exact path="/new_review" component={NewReviewForm} />
-          {found ? <Redirect to={url} /> : null}
         </Switch>
       </div>
     </BrowserRouter>
