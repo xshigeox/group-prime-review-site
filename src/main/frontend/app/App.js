@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { BrowserRouter, Switch, Link, Redirect, Route } from "react-router-dom"
-import { navigate } from "@reach/router"
 import CharacterListContainer from "./components/CharacterListContainer"
 import CharacterShowContainer from "./components/CharacterShowContainer"
 import NewCharacterForm from "./components/NewCharacterForm"
@@ -13,8 +12,10 @@ const App = (props) => {
 
   const search = (result) => {
     if (result !== "notFound") {
+      console.log(result)
       setUrl(result)
       setFound(true)
+      console.log(url)
     } else {
       setFound(false)
     }
@@ -61,7 +62,7 @@ const App = (props) => {
 
       <div className="botton">
         <Switch>
-          {found ? <Redirect from="/" to={url} /> : null}
+          {found ? <Redirect to={url} /> : null}
           <Redirect exact path="/" to="/characters" />
           <Route exact path="/characters" component={CharacterListContainer} />
 

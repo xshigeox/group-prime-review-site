@@ -35,7 +35,8 @@ const Search = (props) => {
       if (
         characters[i]["name"].toLowerCase().includes(searchTerm.toLowerCase())
       ) {
-        props.search(`/characters/${characters[i]["id"]}`)
+        let result = `/characters/${characters[i]["id"]}`
+        props.search(result)
       }
     }
   }
