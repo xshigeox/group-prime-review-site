@@ -24,6 +24,7 @@ body {
   background-image: url("https://static.vecteezy.com/system/resources/thumbnails/000/241/296/original/beautiful-colorful-comic-book-background-illustration.jpg");
 }
 
+
 .top-links {
   position: sticky;
   top: 0;
@@ -34,18 +35,20 @@ body {
   z-index: -1;
 }
 
+
 .topbar-responsive {
-  background: #2c3840;
+  background: #FAD133;
   padding: 1rem 1.5rem;
 }
 
 .topbar-responsive .topbar-responsive-logo {
+  font-size: 24px;
   color: #fefefe;
   vertical-align: middle;
 }
 
 .topbar-responsive .menu {
-  background: #2c3840;
+  background: #FAD133;
 }
 
 .topbar-responsive .menu li:last-of-type {
@@ -68,13 +71,29 @@ body {
 }
 
 .topbar-responsive .menu .topbar-responsive-button {
+  background-color: #ED4630;
   color: #fefefe;
-  border-color: #fefefe;
+  border-color: #ED4630;
   border-radius: 5000px;
   transition: color 0.15s ease-in, border-color 0.15s ease-in;
 }
 
 .topbar-responsive .menu .topbar-responsive-button:hover {
+  background-color: #92388F;
+  color: #c6d1d8;
+  border-color: #c6d1d8;
+}
+
+.button.hollow {
+  background-color: #ED4630;
+  color: #fefefe;
+  border-color: #ED4630;
+  border-radius: 5000px;
+  transition: color 0.15s ease-in, border-color 0.15s ease-in;
+}
+
+.button.hollow:hover {
+  background-color: #92388F;
   color: #c6d1d8;
   border-color: #c6d1d8;
 }
@@ -161,3 +180,4 @@ body {
     animation: fadeIn 1s ease-in;
   }
 }
+
