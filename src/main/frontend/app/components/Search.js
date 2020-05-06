@@ -41,20 +41,25 @@ const Search = (props) => {
   }
 
   return (
-    <form onSubmit={onSearch}>
-      <li>
-        <input
-          type="search"
-          placeholder="Search"
-          value={searchTerm}
-          onChange={handleInputChange}
-        ></input>
-      </li>
+    <li>
+      <form onSubmit={onSearch}>
+        <li>
+          <input
+            type="search"
+            placeholder="Search"
+            value={searchTerm}
+            onChange={handleInputChange}
+          ></input>
+        </li>
 
-      <button type="submit" className="button hollow top-bar-responsive-button">
-        Search
-      </button>
-    </form>
+        <button
+          type="submit"
+          className="button hollow top-bar-responsive-button"
+        >
+          Search
+        </button>
+      </form>
+    </li>
   )
 }
 
