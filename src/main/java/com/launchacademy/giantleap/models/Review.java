@@ -14,6 +14,7 @@ import javax.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 @Table(name = "reviews")
@@ -33,6 +34,7 @@ public class Review {
   @JsonIgnoreProperties("reviews")
   private MarvelCharacter marvelCharacter;
 
+  @Range(min=1, max=5)
   @Column(name = "rating", nullable = false)
   private Integer rating;
 

@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Link, Redirect, Route } from "react-router-dom"
 import CharacterListContainer from "./components/CharacterListContainer"
 import CharacterShowContainer from "./components/CharacterShowContainer"
 import NewCharacterForm from "./components/NewCharacterForm"
+import NewReviewForm from "./components/NewReviewForm"
 
 const App = (props) => {
   const [characters, setCharacters] = useState([])
@@ -109,6 +110,7 @@ const App = (props) => {
             component={CharacterShowContainer}
           />
           <Route exact path="/new" component={NewCharacterForm} />
+          <Route exact path="/new_review" component={NewReviewForm} />
         </Switch>
       </div>
     </BrowserRouter>
