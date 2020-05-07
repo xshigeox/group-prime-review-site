@@ -11,7 +11,6 @@ import NewReviewForm from "./NewReviewForm"
 
 const CharacterInfo = (props) => {
   const {
-    id,
     name,
     bio,
     height,
@@ -65,7 +64,7 @@ const CharacterInfo = (props) => {
       </div>
 
       <div>
-        <NewReviewForm id={id}/>
+        <NewReviewForm character={props.character}/>
       </div>
     </div>
   )
