@@ -5,6 +5,6 @@ Created by:
 
 Michael Horwitz
 Stephanie Garcia
-Andisa 
+Andisa Montez Jones
 
 Apprenti 2 2020

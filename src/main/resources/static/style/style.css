@@ -22,6 +22,7 @@ body {
   font-family: "OPTIBankGothic-Light";
   background-color: whitesmoke;
   background-image: url("https://static.vecteezy.com/system/resources/thumbnails/000/241/296/original/beautiful-colorful-comic-book-background-illustration.jpg");
+  background-size: contain;
 }
 
 .top-links {
@@ -313,3 +314,5 @@ body {
   width: 20px;
   margin-left: 10px;
 }
+
+/*index page styles*/
