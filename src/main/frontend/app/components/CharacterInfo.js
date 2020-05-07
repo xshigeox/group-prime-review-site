@@ -7,10 +7,11 @@ import {
   Radar,
   Legend,
 } from "recharts"
+import NewReviewForm from "./NewReviewForm"
 
 const CharacterInfo = (props) => {
-  console.log(props.character)
   const {
+    id,
     name,
     bio,
     height,
@@ -61,6 +62,10 @@ const CharacterInfo = (props) => {
           />
           <Legend />
         </RadarChart>
+      </div>
+
+      <div>
+        <NewReviewForm id={id}/>
       </div>
     </div>
   )

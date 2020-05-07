@@ -24,7 +24,6 @@ const CharacterShowContainer = (props) => {
         console.log(error)
       })
   }, [])
-  console.log(character)
 
   const data = [
     {
