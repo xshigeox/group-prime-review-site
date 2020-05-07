@@ -38,7 +38,6 @@ const App = (props) => {
                     </button>
                   </Link>
                 </li>
-
                 <li>
                   <input type="search" placeholder="Search"></input>
                 </li>
@@ -48,7 +47,6 @@ const App = (props) => {
                 >
                   Search
                 </button>
-
               </ul>
             </div>
           </div>
