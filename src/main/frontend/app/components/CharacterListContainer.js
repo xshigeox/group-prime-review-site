@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import CharacterListPage from "./CharacterListPage"
+import { Howl } from "howler"
 
 const CharacterListContainer = (props) => {
   const [characters, setCharacters] = useState([])
@@ -42,6 +43,10 @@ const CharacterListContainer = (props) => {
     setSearchTerm(event.currentTarget.value)
   }
 
+  const sound = new Howl({
+    src: ["https://i.annihil.us/u/prod/marvel/i/am/groot/iamgroot.ogg"],
+  })
+
   const handleSubmit = (event) => {
     event.preventDefault()
     for (let i = 0; i < characters.length; i++) {
@@ -49,6 +54,9 @@ const CharacterListContainer = (props) => {
         characters[i]["name"].toLowerCase().includes(searchTerm.toLowerCase())
       ) {
         setFoundCharacter(characters[i])
+        if (characters[i]["name"].toLowerCase().includes("groot")) {
+          sound.play()
+        }
         setSearchResults(true)
       }
     }
