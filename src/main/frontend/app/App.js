@@ -1,26 +1,11 @@
-import React, { useState } from "react"
+import React from "react"
 import { BrowserRouter, Switch, Link, Redirect, Route } from "react-router-dom"
 import CharacterListContainer from "./components/CharacterListContainer"
 import CharacterShowContainer from "./components/CharacterShowContainer"
 import NewCharacterForm from "./components/NewCharacterForm"
 import NewReviewForm from "./components/NewReviewForm"
-import Search from "./components/Search"
 
 const App = (props) => {
-  const [found, setFound] = useState(false)
-  const [url, setUrl] = useState()
-
-  const search = (result) => {
-    if (result !== "notFound") {
-      console.log(result)
-      setUrl(result)
-      setFound(true)
-      console.log(url)
-    } else {
-      setFound(false)
-    }
-  }
-
   return (
     <BrowserRouter>
       <div className="top-links">
@@ -44,7 +29,7 @@ const App = (props) => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/characters">
+                  <Link to="/">
                     <button
                       type="button"
                       className="button hollow topbar-responsive-button"
@@ -53,7 +38,6 @@ const App = (props) => {
                     </button>
                   </Link>
                 </li>
-                <Search search={search} />
               </ul>
             </div>
           </div>
@@ -62,7 +46,6 @@ const App = (props) => {
 
       <div className="botton">
         <Switch>
-          {found ? <Redirect to={url} /> : null}
           <Redirect exact path="/" to="/characters" />
           <Route exact path="/characters" component={CharacterListContainer} />
 
