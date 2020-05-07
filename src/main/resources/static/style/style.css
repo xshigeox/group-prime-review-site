@@ -24,7 +24,6 @@ body {
   background-image: url("https://static.vecteezy.com/system/resources/thumbnails/000/241/296/original/beautiful-colorful-comic-book-background-illustration.jpg");
 }
 
-
 .top-links {
   position: sticky;
   top: 0;
@@ -35,9 +34,8 @@ body {
   z-index: -1;
 }
 
-
 .topbar-responsive {
-  background: #FAD133;
+  background: #fad133;
   padding: 1rem 1.5rem;
 }
 
@@ -48,7 +46,7 @@ body {
 }
 
 .topbar-responsive .menu {
-  background: #FAD133;
+  background: #fad133;
 }
 
 .topbar-responsive .menu li:last-of-type {
@@ -71,29 +69,29 @@ body {
 }
 
 .topbar-responsive .menu .topbar-responsive-button {
-  background-color: #ED4630;
+  background-color: #ed4630;
   color: #fefefe;
-  border-color: #ED4630;
+  border-color: #ed4630;
   border-radius: 5000px;
   transition: color 0.15s ease-in, border-color 0.15s ease-in;
 }
 
 .topbar-responsive .menu .topbar-responsive-button:hover {
-  background-color: #92388F;
+  background-color: #92388f;
   color: #c6d1d8;
   border-color: #c6d1d8;
 }
 
 .button.hollow {
-  background-color: #ED4630;
+  background-color: #ed4630;
   color: #fefefe;
-  border-color: #ED4630;
+  border-color: #ed4630;
   border-radius: 5000px;
   transition: color 0.15s ease-in, border-color 0.15s ease-in;
 }
 
 .button.hollow:hover {
-  background-color: #92388F;
+  background-color: #92388f;
   color: #c6d1d8;
   border-color: #c6d1d8;
 }
@@ -181,3 +179,137 @@ body {
   }
 }
 
+.travel-feature-card-header {
+  margin-top: 30px;
+  background-color: #ed4630;
+  padding: 10px 15px 5px 45px;
+  position: relative;
+  margin-top: 15px;
+}
+
+.travel-feature-card-header.icon:after {
+  font: normal normal normal 14px/1 FontAwesome;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  color: #fefefe;
+}
+
+.travel-feature-card-header.hotel-icon:after {
+  content: "\f236";
+}
+
+.travel-feature-card-header.car-icon:after {
+  content: "\f1b9";
+}
+
+.travel-feature-card-header .travel-feature-card-subtitle {
+  float: left;
+  font-weight: 800;
+  letter-spacing: 1px;
+  font-size: 1em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.travel-feature-card-header-controls a {
+  color: #fefefe;
+}
+
+.travel-feature-card-header-controls i {
+  height: 20px;
+  width: 20px;
+  margin-left: 10px;
+}
+
+.travel-feature-card-image {
+  margin-top: 5px;
+}
+
+.travel-feature-card-details {
+  background: #fad133;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 20px;
+  color: #8a8a8a;
+}
+
+.travel-feature-card-details button.added-button {
+  color: #505050;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: 0.8em;
+}
+
+.travel-feature-card-details button.added-button img {
+  margin-right: 5px;
+}
+
+.travel-feature-card-details button.added-button:hover {
+  color: #505050;
+  border: 1px solid #747474;
+}
+
+.travel-feature-card-details button.add-button {
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  font-size: 0.8em;
+}
+
+@media screen and (max-width: 39.9375em) {
+  .travel-feature-card-content {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #cacaca;
+  }
+}
+
+.travel-feature-card-price {
+  text-align: right;
+}
+
+@media screen and (max-width: 39.9375em) {
+  .travel-feature-card-price {
+    padding-top: 15px;
+  }
+  .travel-feature-card-price .price-subtext {
+    margin-bottom: 0px;
+  }
+}
+
+.travel-feature-card-price h6 {
+  font-weight: 600;
+  font-size: 1.3em;
+  color: #0a0a0a;
+  padding: 0;
+  margin: 0;
+}
+
+.travel-feature-card-title {
+  font-weight: 500;
+  font-size: 1.25em;
+  color: #0a0a0a;
+}
+
+.travel-feature-card-date-range {
+  font-size: 0.9em;
+  font-weight: 700;
+  color: #0a0a0a;
+}
+
+.travel-feature-card-header-controls {
+  float: right;
+}
+
+.travel-feature-card-header-controls i {
+  height: 20px;
+  width: 20px;
+  margin-left: 10px;
+}

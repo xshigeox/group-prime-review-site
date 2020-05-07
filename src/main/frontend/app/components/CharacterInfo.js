@@ -8,6 +8,7 @@ import {
   Legend,
 } from "recharts"
 import NewReviewForm from "./NewReviewForm"
+import ReviewListContainer from "./ReviewListContainer"
 
 const CharacterInfo = (props) => {
   const {
@@ -61,6 +62,9 @@ const CharacterInfo = (props) => {
           />
           <Legend />
         </RadarChart>
+      </div>
+      <div>
+        <ReviewListContainer character={props.character} />
       </div>
 
       <div>
