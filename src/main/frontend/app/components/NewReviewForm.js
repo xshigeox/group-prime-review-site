@@ -8,12 +8,9 @@ const NewReviewForm = (props) => {
     const [newReview, setNewReview] = useState({
         rating:"",
         review:"",
-        marvelCharacter: `${props.id}`
     })
 
     const [errors, setErrors] = useState({})
-    const [submitted, setSubmitted] = useState(false)
-    const [reRenderShow, setToShow] = useState(false)
 
     const attributeValues = [1, 2, 3, 4, 5]
     const attributeOptions = attributeValues.map((value) => {
@@ -23,6 +20,7 @@ const NewReviewForm = (props) => {
             </option>
         )
     })
+
     const isValidForSubmission = () => {
       let submitErrors = {}
       const requiredFields = [
@@ -44,18 +42,27 @@ const NewReviewForm = (props) => {
     }
 
     const handleSubmit = (event) => {
-      event.prevent.default()
+      event.preventDefault()
+
+      const formPayLoad = {
+        rating: newReview.rating,
+        review: newReview.review,
+        marvelCharacter: props.character
+      }
 
       if(isValidForSubmission()) {
         fetch("/api/v1/new_review", {
           credentials: "same-origin",
           method: "POST",
-          body: JSON.stringify(newReview),
+          body: JSON.stringify(formPayLoad),
           headers: { "Content-Type": "application/json"},
         })
         .then((response) => {
           if(response.ok) {
-            setSubmitted(true)
+            setNewReview({
+              rating:"",
+              review:"",
+          })
           } else {
             let errorMessage = `${response.status} (${response.statusText})`
             throw new Error(errorMessage)
@@ -64,15 +71,13 @@ const NewReviewForm = (props) => {
         .catch((error) => console.error(`Error in fetch: ${error.message}`))
       }
     }
-
     const handleInputChange = (event) => {
       setNewReview({
         ...newReview,
         [event.currentTarget.id]: event.currentTarget.value
       })
     }
-
-    if(!submitted) {
+    
       return(
         <form
         autoComplete="off"
@@ -113,24 +118,7 @@ const NewReviewForm = (props) => {
           value="submit"
           />
 
-          <input
-          type="hidden"
-          name="marvelCharacter"
-          id="marvelCharacter"
-          value={props.id}
-          />
         </form>
       )
-    } else {
-      return (
-        <div>
-        <h1>Review Added!</h1>
-        <div id="hidden">
-          {setTimeout(() => setToShow(true), 3000)}
-          {reRenderShow ? <Redirect to="/characters/:id" /> : null}
-        </div>
-      </div>
-      )
-    }
 }
 export default NewReviewForm

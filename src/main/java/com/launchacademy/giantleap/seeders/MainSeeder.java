@@ -10,9 +10,13 @@ public class MainSeeder implements CommandLineRunner {
   @Autowired
   private MarvelCharacterSeeder marvelCharacterSeeder;
 
+  @Autowired
+  private ReviewSeeder reviewSeeder;
+
   @Override
   public void run(String... args) throws Exception {
 
     marvelCharacterSeeder.seed();
+    reviewSeeder.seed();
   }
 }
