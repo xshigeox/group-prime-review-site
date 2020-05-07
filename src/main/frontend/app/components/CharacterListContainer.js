@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import CharacterListPage from "./CharacterListPage"
-import { Howl } from "howler"
+
 
 const CharacterListContainer = (props) => {
   const [characters, setCharacters] = useState([])
