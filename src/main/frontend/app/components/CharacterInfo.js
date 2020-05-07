@@ -10,7 +10,6 @@ import {
 import NewReviewForm from "./NewReviewForm"
 
 const CharacterInfo = (props) => {
-  console.log(props.character)
   const {
     id,
     name,

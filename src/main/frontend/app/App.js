@@ -29,7 +29,7 @@ const App = (props) => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/characters">
+                  <Link to="/">
                     <button
                       type="button"
                       className="button hollow topbar-responsive-button"
@@ -38,16 +38,6 @@ const App = (props) => {
                     </button>
                   </Link>
                 </li>
-                <li>
-                  <input type="search" placeholder="Search"></input>
-                </li>
-
-                <button
-                  type="button"
-                  className="button hollow top-bar-responsive-button"
-                >
-                  Search
-                </button>
               </ul>
             </div>
           </div>
@@ -58,6 +48,7 @@ const App = (props) => {
         <Switch>
           <Redirect exact path="/" to="/characters" />
           <Route exact path="/characters" component={CharacterListContainer} />
+
           <Route
             exact
             path="/characters/:id"

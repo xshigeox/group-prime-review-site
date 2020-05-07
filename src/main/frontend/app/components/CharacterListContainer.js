@@ -3,6 +3,12 @@ import CharacterListPage from "./CharacterListPage"
 
 const CharacterListContainer = (props) => {
   const [characters, setCharacters] = useState([])
+  const [searchTerm, setSearchTerm] = useState("")
+  const [searchResults, setSearchResults] = useState(false)
+  const [foundCharacter, setFoundCharacter] = useState({})
+
+  let characterList
+
   useEffect(() => {
     fetch("/api/v1/characters")
       .then((response) => {
@@ -24,11 +30,45 @@ const CharacterListContainer = (props) => {
       })
   }, [])
 
-  const characterList = characters.map((character) => {
-    return <CharacterListPage character={character} key={character.id} />
-  })
+  if (!searchResults) {
+    characterList = characters.map((character) => {
+      return <CharacterListPage character={character} key={character.id} />
+    })
+  } else {
+    return <CharacterListPage character={foundCharacter} />
+  }
 
-  return <div>{characterList}</div>
+  const handleInputChange = (event) => {
+    setSearchTerm(event.currentTarget.value)
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    for (let i = 0; i < characters.length; i++) {
+      if (
+        characters[i]["name"].toLowerCase().includes(searchTerm.toLowerCase())
+      ) {
+        setFoundCharacter(characters[i])
+        setSearchResults(true)
+      }
+    }
+  }
+
+  return (
+    <>
+      <div>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="search"
+            placeholder="Search"
+            value={searchTerm}
+            onChange={handleInputChange}
+          ></input>
+        </form>
+      </div>
+      <div>{characterList}</div>
+    </>
+  )
 }
 
 export default CharacterListContainer
