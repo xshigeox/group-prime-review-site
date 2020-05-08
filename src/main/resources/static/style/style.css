@@ -3,26 +3,11 @@
   src: url("fonts/OPTIBankGothic-Light.otf") format("opentype");
 }
 
-@font-face {
-  font-family: "actionmen1_1";
-  src: url(fonts/actionmen1_1.ttf) format("truetype");
-}
-
-@font-face {
-  font-family: "xfighters";
-  src: url(fonts/xfighters.ttf) format("truetype");
-}
-
-@font-face {
-  font-family: "actionwomen";
-  src: url("fonts/actionwomen.ttf") format("truetype");
-}
-
 body {
   font-family: "OPTIBankGothic-Light";
   background-color: whitesmoke;
   background-image: url("https://static.vecteezy.com/system/resources/thumbnails/000/241/296/original/beautiful-colorful-comic-book-background-illustration.jpg");
-  background-size: contain;
+  background-size: 100% 100%;
 }
 
 .top-links {
@@ -78,13 +63,13 @@ body {
 }
 
 .topbar-responsive .menu .topbar-responsive-button:hover {
-  background-color: #92388f;
+  background-color: #F07335;
   color: #c6d1d8;
   border-color: #c6d1d8;
 }
 
 .button.hollow {
-  background-color: #ed4630;
+  background-color: #F07335;
   color: #fefefe;
   border-color: #ed4630;
   border-radius: 5000px;
@@ -92,7 +77,7 @@ body {
 }
 
 .button.hollow:hover {
-  background-color: #92388f;
+  background-color: #ed4630;
   color: #c6d1d8;
   border-color: #c6d1d8;
 }
@@ -315,4 +300,3 @@ body {
   margin-left: 10px;
 }
 
-/*index page styles*/
