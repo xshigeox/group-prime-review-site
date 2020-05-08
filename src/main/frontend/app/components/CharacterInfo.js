@@ -12,7 +12,7 @@ import ReviewListContainer from "./ReviewListContainer"
 
 const CharacterInfo = (props) => {
   const [formReveal, setFormReveal] = useState(false)
-  const [submitted, setSubmitted] = useState(false)
+  const [update, setUpdate] = useState(false)
   const {
     name,
     alias,
@@ -35,12 +35,12 @@ const CharacterInfo = (props) => {
 
   const handleClick = (event) => {
     event.preventDefault()
-    setFormReveal(true)
+    setFormReveal(!formReveal)
   }
 
-  const submit = () => {
+  const updateReviews = () => {
+    setUpdate(!update)
     setFormReveal(false)
-    props.addReview()
   }
 
   return (
@@ -91,11 +91,14 @@ const CharacterInfo = (props) => {
         <NewReviewForm
           character={props.character}
           formReveal={formReveal}
-          submit={submit}
+          updateReviews={updateReviews}
         />
       </div>
       <div>
-        <ReviewListContainer character={props.character} />
+        <ReviewListContainer
+          character={props.character}
+          updateReviews={updateReviews}
+        />
       </div>
     </div>
   )

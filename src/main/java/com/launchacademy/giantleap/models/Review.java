@@ -29,12 +29,12 @@ public class Review {
   @Column(name = "id", nullable = false, unique = true)
   private Integer id;
 
-  @ManyToOne(fetch = FetchType.LAZY)
+  @ManyToOne
   @JoinColumn(name = "character_id", nullable = false)
   @JsonIgnoreProperties("reviews")
   private MarvelCharacter marvelCharacter;
 
-  @Range(min=1, max=5)
+  @Range(min = 1, max = 5)
   @Column(name = "rating", nullable = false)
   private Integer rating;
 

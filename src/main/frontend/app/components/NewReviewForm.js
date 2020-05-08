@@ -54,7 +54,7 @@ const NewReviewForm = (props) => {
       })
         .then((response) => {
           if (response.ok) {
-            props.submit()
+            props.updateReviews()
             setNewReview({
               rating: "",
               review: "",

@@ -2,7 +2,10 @@ package com.launchacademy.giantleap.controllers.api.v1;
 
 import com.launchacademy.giantleap.models.MarvelCharacter;
 import com.launchacademy.giantleap.models.Review;
+import com.launchacademy.giantleap.repositories.MarvelCharacterRepository;
 import com.launchacademy.giantleap.repositories.ReviewRepository;
+import java.util.List;
+import java.util.Optional;
 import javax.validation.Valid;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,6 +29,9 @@ public class ReviewApiController {
 
   @Autowired
   private ReviewRepository reviewRepo;
+
+  @Autowired
+  private MarvelCharacterRepository marvelCharacterRepo;
 
   @NoArgsConstructor
   private class InvalidCharacterIdException extends RuntimeException {
@@ -48,7 +55,7 @@ public class ReviewApiController {
   }
 
   @ControllerAdvice
-  private class reviewNotFoundAdvoice {
+  private class reviewNotFoundAdvice {
 
     @ResponseBody
     @ExceptionHandler(ReviewNotFoundException.class)
@@ -56,6 +63,22 @@ public class ReviewApiController {
     String reviewNotFound(ReviewNotFoundException ex) {
       return ex.getMessage();
     }
+  }
+
+  @GetMapping("/api/v1/reviews")
+  public Iterable<Review> getAllReviews() {
+    return reviewRepo.findAll();
+  }
+
+  @GetMapping("/api/v1/reviews/{id}")
+  public List<Review> findReviewsByCharacter(@PathVariable Integer id) {
+    Optional<MarvelCharacter> character = marvelCharacterRepo.findById(id);
+    MarvelCharacter foundCharacter = new MarvelCharacter();
+
+    if (character.isPresent()) {
+      foundCharacter = character.get();
+    }
+    return reviewRepo.findAllByMarvelCharacter(foundCharacter);
   }
 
   @PostMapping("/api/v1/new_review")
