@@ -5,11 +5,17 @@ const CharacterListPage = (props) => {
   const { imgUrl, name, id } = props.character
 
   return (
-    <div className="row small-up-1 medium-up-2 large-up-3 text-center">
-      <Link to={`/characters/${id}`}>
-        <img src={imgUrl} alt={name} height="210" width="191" />
-        <p className="ow-anywhere">{name}</p>
-      </Link>
+      <div className="small-3 large-4 columns text-center">
+        {/*<div className="list-container">*/}
+          <div className="show">
+            <Link to={`/characters/${id}`}>
+            <img className="size" src={imgUrl} alt={name} height="210" width="191" />
+            <br/>
+            <span className="hover">{name}</span>
+            <p className="background">{name}</p>
+            </Link>
+          </div>
+      {/*</div>*/}
     </div>
   )
 }

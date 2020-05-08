@@ -38,6 +38,15 @@ const App = (props) => {
                     </button>
                   </Link>
                 </li>
+                <li>
+                  <input type="search" placeholder="Search"></input>
+                </li>
+                <button
+                  type="button"
+                  className="button hollow top-bar-responsive-button"
+                >
+                  Search
+                </button>
               </ul>
             </div>
           </div>
