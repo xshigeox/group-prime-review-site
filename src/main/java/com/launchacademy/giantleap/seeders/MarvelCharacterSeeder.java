@@ -18,7 +18,8 @@ public class MarvelCharacterSeeder {
 
     if (characterRepo.count() == 0) {
       MarvelCharacter storm = new MarvelCharacter();
-      storm.setName("Ororo Monroe (Storm)");
+      storm.setName("Ororo Monroe");
+      storm.setAlias("Storm");
       storm.setBio(
           "Ororo Monroe is the descendant of an ancient line of African priestesses, all of whom have white hair, blue eyes, and the potential to wield magic.");
       storm.setDurability(6);
@@ -37,6 +38,7 @@ public class MarvelCharacterSeeder {
 
       MarvelCharacter colleen = new MarvelCharacter();
       colleen.setName("Colleen Wing");
+      colleen.setAlias("Unknown");
       colleen.setBio(
           "Colleen Wing was raised in Japan by her grandfather Kanji Ozawa, who taught her the ways of a samurai, in which she became highly skilled, after which she teamed up with Misty Knight at the behest of Tony Stark as a new Heroes for Hire tasked with capturing superhumans who have not registered.");
       colleen.setDurability(2);
@@ -54,7 +56,8 @@ public class MarvelCharacterSeeder {
       marvelCharacters.add(colleen);
 
       MarvelCharacter jane = new MarvelCharacter();
-      jane.setName("Jane Foster (Thor Goddess of Thunder");
+      jane.setName("Jane Foster");
+      jane.setAlias("Thor Goddess of Thunder");
       jane.setBio(
           "After Thor (Odinson) was deemed no longer worthy of wielding Mjolnir, Jane Foster was telepathically drawn to the Moon where Mjolnir lay in wait. Upon lifting the hammer, Jane underwent a physical transformation and took on the powers of Thor.");
       jane.setDurability(6);
@@ -72,7 +75,8 @@ public class MarvelCharacterSeeder {
       marvelCharacters.add(jane);
 
       MarvelCharacter doom = new MarvelCharacter();
-      doom.setName("Victor Von Doom (Doctor Doom)");
+      doom.setName("Victor Von Doom");
+      doom.setAlias("Doctor Doom");
       doom.setBio(
           "With scientific genius, an unquenchable lust for power, and a towering ego, Victor Von Doom has forged himself into one of the world’s greatest villains.");
       doom.setDurability(6);
@@ -90,7 +94,8 @@ public class MarvelCharacterSeeder {
       marvelCharacters.add(doom);
 
       MarvelCharacter pool = new MarvelCharacter();
-      pool.setName("Wade Wilson (Deadpool)");
+      pool.setName("Wade Wilson");
+      pool.setAlias("Deadpool");
       pool.setBio(
           "Welcome to the Deadpool character bio, nerds! I mean...True Believers! Brought to you by me, myself, and I: the fabulous Deadpool! I could have let some smelly pencil-pushing intern spell out my life story for you, but you deserve better.");
       pool.setDurability(4);
@@ -108,7 +113,8 @@ public class MarvelCharacterSeeder {
       marvelCharacters.add(pool);
 
       MarvelCharacter task = new MarvelCharacter();
-      task.setName("Anthony Masters (Taskmaster)");
+      task.setName("Anthony Masters");
+      task.setAlias("Taskmaster");
       task.setBio(
           "The Taskmaster is a skilled tactician, adept at martial arts thanks to his photographic reflexes, and a career criminal who trains hench-thugs for terrorist organizations and crimi");
       task.setDurability(2);
@@ -127,6 +133,7 @@ public class MarvelCharacterSeeder {
 
       MarvelCharacter groot = new MarvelCharacter();
       groot.setName("Groot");
+      groot.setAlias("Unknown");
       groot.setBio(
           "Hailing from the Branch Worlds’ Planet X, Groot is part of a species called Groot, so his name is also the title of his taxonomic classification. From the time he was a sapling, Groot was destined to protect the rights of the downtrodden. He campaigned for the Undergrowth, anthropomorphic animals and fungi who helped maintain Planet X’s ecosystem by performing menial tasks. Groot’s noble campaign drew the rancor of the other Groots and he ended up leaving his home world.");
       groot.setDurability(4);
@@ -146,7 +153,8 @@ public class MarvelCharacterSeeder {
       marvelCharacters.add(groot);
 
       MarvelCharacter wanda = new MarvelCharacter();
-      wanda.setName("Wanda Maximoff (Scarlet Witch");
+      wanda.setName("Wanda Maximoff");
+      wanda.setAlias("Scarlet Witch");
       wanda.setBio(
           "A powerful mutant sorceress, Wanda Maximoff has been a master of the mystical arts for both the X-Men and the Avengers.");
       wanda.setDurability(2);

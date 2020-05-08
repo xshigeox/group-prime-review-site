@@ -39,6 +39,9 @@ public class MarvelCharacter {
   @Column(name = "name", nullable = false)
   private String name;
 
+  @Column(name = "alias")
+  private String alias = "Unknown";
+
   @NotEmpty
   @Column(name = "bio", nullable = false)
   private String bio;

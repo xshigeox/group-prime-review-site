@@ -6,6 +6,7 @@ import _ from "lodash"
 const NewCharacterForm = (props) => {
   const [newCharacter, setNewCharacter] = useState({
     name: "",
+    alias: "",
     bio: "",
     durability: "",
     energy: "",
@@ -72,6 +73,10 @@ const NewCharacterForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault()
 
+    if (newCharacter.alias === "") {
+      newCharacter["alias"] = "Unknown"
+    }
+
     if (isValidForSubmission()) {
       fetch("/api/v1/new", {
         credentials: "same-origin",
@@ -116,6 +121,17 @@ const NewCharacterForm = (props) => {
             id="name"
             name="name"
             value={newCharacter.name}
+            onChange={handleInputChange}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="alias">Alias: </label>
+          <input
+            type="text"
+            id="alias"
+            name="alias"
+            value={newCharacter.alias}
             onChange={handleInputChange}
           />
         </div>
