@@ -4,7 +4,6 @@ import ReviewInfo from "./ReviewInfo"
 const ReviewListContainer = (props) => {
   const [deleted, setDeleted] = useState(false)
 
-  console.log(deleted)
   let reviews
   if (props.character.reviews) {
     reviews = props.character.reviews.map((item) => {
