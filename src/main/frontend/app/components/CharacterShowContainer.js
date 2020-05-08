@@ -4,6 +4,8 @@ import CharacterInfo from "./CharacterInfo"
 const CharacterShowContainer = (props) => {
   const id = props.match.params.id
   const [character, setCharacter] = useState([])
+  const [submitted, setSubmitted] = useState(false)
+
   useEffect(() => {
     fetch(`/api/v1/characters/${id}`)
       .then((response) => {
@@ -24,6 +26,10 @@ const CharacterShowContainer = (props) => {
         console.log(error)
       })
   }, [])
+
+  const addReview = () => {
+    setSubmitted(!submitted)
+  }
 
   const data = [
     {
@@ -58,7 +64,9 @@ const CharacterShowContainer = (props) => {
     },
   ]
 
-  return <CharacterInfo character={character} data={data} />
+  return (
+    <CharacterInfo character={character} data={data} addReview={addReview} />
+  )
 }
 
 export default CharacterShowContainer
