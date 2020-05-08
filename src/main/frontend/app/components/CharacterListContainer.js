@@ -58,6 +58,13 @@ const CharacterListContainer = (props) => {
           sound.play()
         }
         setSearchResults(true)
+      } else if (
+        characters[i]["alias"]
+          .toLowerCase()
+          .includes(searchTerm.toLocaleLowerCase())
+      ) {
+        setFoundCharacter(characters[i])
+        setSearchResults(true)
       }
     }
   }
