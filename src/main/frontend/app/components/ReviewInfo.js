@@ -13,6 +13,11 @@ const ReviewInfo = (props) => {
               <h5 className="travel-feature-card-subtitle">
                 {props.ratingIcon}
               </h5>
+              <div className="travel-feature-card-header-controls">
+                <span onClick={props.delete}>
+                  <i className="far fa-trash-alt"></i>
+                </span>
+              </div>
             </div>
           </div>
         </div>

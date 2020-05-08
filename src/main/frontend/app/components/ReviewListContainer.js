@@ -1,7 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import ReviewInfo from "./ReviewInfo"
 
 const ReviewListContainer = (props) => {
+  const [deleted, setDeleted] = useState(false)
+
   let reviews
   if (props.character.reviews) {
     reviews = props.character.reviews.map((item) => {
@@ -55,6 +57,33 @@ const ReviewListContainer = (props) => {
         ratingName = "5 Stars"
       }
 
+      const deleteReview = (event) => {
+        event.preventDefault()
+
+        let answer = prompt(
+          "Are you sure you want to delete this review?\nEnter 'Yes' to delete or 'No' to cancel"
+        )
+        if (answer.toLocaleLowerCase() === "yes") {
+          let id = item.id
+          fetch(`/api/v1/delete/${id}`, {
+            method: "DELETE",
+            body: JSON.stringify(item),
+            headers: { "Content-Type": "application/json" },
+          })
+            .then((response) => {
+              if (response.ok) {
+                alert("Review deleted")
+                setDeleted(true)
+                window.location.href = "http://localhost:8080"
+              } else {
+                let errorMessage = `${response.status} (${response.statusText})`
+                throw new Error(errorMessage)
+              }
+            })
+            .catch((error) => console.error(`Error in fetch: ${error.message}`))
+        }
+      }
+
       return (
         <ReviewInfo
           key={item.id}
@@ -62,6 +91,7 @@ const ReviewListContainer = (props) => {
           character={props.character}
           ratingIcon={ratingIcon}
           ratingName={ratingName}
+          delete={deleteReview}
         />
       )
     })
