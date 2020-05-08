@@ -10,4 +10,6 @@ public interface MarvelCharacterRepository extends
 
   public MarvelCharacter findByName(String name);
 
+  public Iterable<MarvelCharacter> findAllByOrderByName();
+
 }
