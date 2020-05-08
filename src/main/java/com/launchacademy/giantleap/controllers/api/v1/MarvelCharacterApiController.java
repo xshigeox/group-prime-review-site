@@ -59,7 +59,7 @@ public class MarvelCharacterApiController {
 
   @GetMapping("/characters")
   public Iterable<MarvelCharacter> getAllCharacters() {
-    return marvelCharacterRepo.findAll();
+    return marvelCharacterRepo.findAllByOrderByName();
   }
 
   @GetMapping("/characters/{id}")
