@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import ReviewInfo from "./ReviewInfo"
 
 const ReviewListContainer = (props) => {
-  const [deleted, setDeleted] = useState(false)
 
   let reviews
   if (props.character.reviews) {
@@ -73,8 +72,7 @@ const ReviewListContainer = (props) => {
             .then((response) => {
               if (response.ok) {
                 alert("Review deleted")
-                setDeleted(true)
-                window.location.href = "http://localhost:8080"
+                props.updateReviews()
               } else {
                 let errorMessage = `${response.status} (${response.statusText})`
                 throw new Error(errorMessage)

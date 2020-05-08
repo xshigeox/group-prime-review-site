@@ -8,4 +8,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 public interface MarvelCharacterRepository extends
     PagingAndSortingRepository<MarvelCharacter, Integer> {
 
+  public MarvelCharacter findByName(String name);
+
 }

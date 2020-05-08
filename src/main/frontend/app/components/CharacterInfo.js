@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import {
   RadarChart,
   PolarGrid,
@@ -11,6 +11,8 @@ import NewReviewForm from "./NewReviewForm"
 import ReviewListContainer from "./ReviewListContainer"
 
 const CharacterInfo = (props) => {
+  const [formReveal, setFormReveal] = useState(false)
+  const [update, setUpdate] = useState(false)
   const {
     name,
     alias,
@@ -31,6 +33,17 @@ const CharacterInfo = (props) => {
     inches = heightSplit[1]
   }
 
+  const handleClick = (event) => {
+    event.preventDefault()
+    setFormReveal(!formReveal)
+  }
+
+  const updateReviews = () => {
+    setUpdate(!update)
+    setFormReveal(false)
+    props.update()
+  }
+
   return (
     <div>
       <div>
@@ -45,7 +58,7 @@ const CharacterInfo = (props) => {
         <p>
           Height: {feet}' {inches}"
         </p>
-        <p>Weight: {weight}</p>
+        <p>Weight: {weight}lbs</p>
         <p>Gender: {gender}</p>
         <p>Eye Color: {eyeColor}</p>
         <p>Hair Color: {hairColor}</p>
@@ -67,11 +80,26 @@ const CharacterInfo = (props) => {
         </RadarChart>
       </div>
       <div>
-        <ReviewListContainer character={props.character} />
+        <button
+          type="button"
+          className="button hollow topbar-responsive-button"
+          onClick={handleClick}
+        >
+          Add Review
+        </button>
       </div>
-
       <div>
-        <NewReviewForm character={props.character} />
+        <NewReviewForm
+          character={props.character}
+          formReveal={formReveal}
+          updateReviews={updateReviews}
+        />
+      </div>
+      <div>
+        <ReviewListContainer
+          character={props.character}
+          updateReviews={updateReviews}
+        />
       </div>
     </div>
   )
