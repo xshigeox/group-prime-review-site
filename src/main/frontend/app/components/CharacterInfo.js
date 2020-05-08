@@ -41,6 +41,7 @@ const CharacterInfo = (props) => {
   const updateReviews = () => {
     setUpdate(!update)
     setFormReveal(false)
+    props.update()
   }
 
   return (

@@ -75,7 +75,6 @@ const ReviewListContainer = (props) => {
                 alert("Review deleted")
                 setDeleted(true)
                 props.updateReviews()
-                window.location.href = "http://localhost:8080"
               } else {
                 let errorMessage = `${response.status} (${response.statusText})`
                 throw new Error(errorMessage)
