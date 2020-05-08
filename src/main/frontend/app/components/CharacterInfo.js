@@ -13,6 +13,7 @@ import ReviewListContainer from "./ReviewListContainer"
 const CharacterInfo = (props) => {
   const {
     name,
+    alias,
     bio,
     height,
     weight,
@@ -33,7 +34,9 @@ const CharacterInfo = (props) => {
   return (
     <div>
       <div>
-        <h1>{name}</h1>
+        <h1>
+          {name} - {alias}
+        </h1>
         <p>{bio}</p>
         <img src={imgUrl} alt={name} height="210" width="191" />
       </div>
@@ -68,7 +71,7 @@ const CharacterInfo = (props) => {
       </div>
 
       <div>
-        <NewReviewForm character={props.character}/>
+        <NewReviewForm character={props.character} />
       </div>
     </div>
   )

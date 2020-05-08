@@ -1,6 +1,7 @@
 CREATE TABLE marvel_characters (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
+  alias VARCHAR(255) DEFAULT 'Unknown',
   bio TEXT NOT NULL,
   img_url VARCHAR(255) NOT NULL,
   durability INTEGER NOT NULL CHECK (durability > 0 AND durability < 8),
