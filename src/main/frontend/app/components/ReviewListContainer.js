@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import ReviewInfo from "./ReviewInfo"
 
 const ReviewListContainer = (props) => {
-
   let reviews
   if (props.character.reviews) {
     reviews = props.character.reviews.map((item) => {
@@ -71,7 +70,6 @@ const ReviewListContainer = (props) => {
           })
             .then((response) => {
               if (response.ok) {
-                alert("Review deleted")
                 props.updateReviews()
               } else {
                 let errorMessage = `${response.status} (${response.statusText})`
@@ -90,6 +88,7 @@ const ReviewListContainer = (props) => {
           ratingIcon={ratingIcon}
           ratingName={ratingName}
           delete={deleteReview}
+          edited={props.edited}
         />
       )
     })

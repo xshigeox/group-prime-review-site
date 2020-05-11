@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -88,6 +89,18 @@ public class ReviewApiController {
     } else {
       return reviewRepo.save(review);
     }
+  }
+
+  @PutMapping("/api/v1/edit_review/{id}")
+  public Review update(@RequestBody Review newReview, @PathVariable Integer id) {
+    return reviewRepo.findById(id).map(
+        review -> {
+          review.setId(id);
+          review.setRating(newReview.getRating());
+          review.setReview(newReview.getReview());
+          return reviewRepo.save(review);
+        }
+    ).orElseThrow(ReviewNotFoundException::new);
   }
 
   @DeleteMapping("/api/v1/delete/{id}")

@@ -44,6 +44,10 @@ const CharacterInfo = (props) => {
     props.update()
   }
 
+  const edited = () => {
+    props.update()
+  }
+
   return (
     <div>
       <div>
@@ -99,6 +103,7 @@ const CharacterInfo = (props) => {
         <ReviewListContainer
           character={props.character}
           updateReviews={updateReviews}
+          edited={edited}
         />
       </div>
     </div>
