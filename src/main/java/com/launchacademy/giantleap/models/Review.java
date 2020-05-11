@@ -1,6 +1,8 @@
 package com.launchacademy.giantleap.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.sql.Timestamp;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -40,5 +42,8 @@ public class Review {
 
   @Column(name = "review", nullable = false)
   private String review;
+
+  @Column(name = "time_stamp")
+  private Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
 }

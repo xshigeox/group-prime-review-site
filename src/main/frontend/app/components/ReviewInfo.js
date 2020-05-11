@@ -4,6 +4,12 @@ const ReviewInfo = (props) => {
   const { review } = props.review
   const { name, imgUrl } = props.character
 
+  let date = new Date(props.review.timestamp).toLocaleDateString()
+  let time = new Date(props.review.timestamp).toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+  })
+
   return (
     <div>
       <div className="travel-feature-card">
@@ -14,6 +20,8 @@ const ReviewInfo = (props) => {
                 {props.ratingIcon}
               </h5>
               <div className="travel-feature-card-header-controls">
+                <span>{date} - </span>
+                <span>{time} </span>
                 <span onClick={props.delete}>
                   <i className="far fa-trash-alt"></i>
                 </span>

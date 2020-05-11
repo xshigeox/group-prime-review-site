@@ -9,4 +9,6 @@ public interface ReviewRepository extends PagingAndSortingRepository<Review, Int
 
   public List<Review> findAllByMarvelCharacter(MarvelCharacter character);
 
+  public List<Review> findAllByMarvelCharacterOrderByIdDesc(MarvelCharacter character);
+
 }
