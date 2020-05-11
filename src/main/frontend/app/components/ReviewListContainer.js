@@ -2,7 +2,6 @@ import React, { useState } from "react"
 import ReviewInfo from "./ReviewInfo"
 
 const ReviewListContainer = (props) => {
-
   let reviews
   if (props.character.reviews) {
     reviews = props.character.reviews.map((item) => {
@@ -90,6 +89,7 @@ const ReviewListContainer = (props) => {
           ratingIcon={ratingIcon}
           ratingName={ratingName}
           delete={deleteReview}
+          edited={props.edited}
         />
       )
     })
