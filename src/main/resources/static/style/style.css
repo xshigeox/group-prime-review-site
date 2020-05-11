@@ -302,3 +302,25 @@ body {
   width: 20px;
   margin-left: 10px;
 }
+
+/*form*/
+div.form {
+  text-align: center;
+  margin-top: 10px;
+
+}
+form#newCharacterForm {
+  background-color: rgba(255,255,255,0.5);
+  display: inline-block;
+  text-align: center;
+}
+
+h1 {
+  font-family: "OPTIBankGothic-Light";
+  font-weight: bold;
+  font-size: 36px;
+}
+
+label {
+  font-weight: bold;
+}
