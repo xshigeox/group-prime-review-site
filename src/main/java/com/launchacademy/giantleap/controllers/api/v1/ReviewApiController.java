@@ -78,7 +78,7 @@ public class ReviewApiController {
     if (character.isPresent()) {
       foundCharacter = character.get();
     }
-    return reviewRepo.findAllByMarvelCharacter(foundCharacter);
+    return reviewRepo.findAllByMarvelCharacterOrderByIdDesc(foundCharacter);
   }
 
   @PostMapping("/api/v1/new_review")
