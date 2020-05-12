@@ -7,12 +7,18 @@
   margin-bottom: 2rem;
 }
 
+.portfolio-resume-spacing-bio{
+  margin-bottom: 2rem;
+  text-align: justify;
+}
+
 .portfolio-resume-wrapper {
   padding: 2rem 4rem;
   text-align: center;
   color: white;
   
 }
+
 
 .portfolio-resume-wrapper-recharts {
   padding: 2rem 0rem;
@@ -23,6 +29,8 @@
 .portfolio-resume-headshot {
   margin-bottom: 2rem;
   border-radius: 50%;
+  width: 250px;
+  height: 250px;
 }
 
 .portfolio-resume-header {
