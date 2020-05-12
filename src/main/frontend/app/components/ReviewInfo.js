@@ -20,7 +20,6 @@ const ReviewInfo = (props) => {
   const edited = () => {
     setEditReveal(false)
     props.edited()
-    console.log("review Info")
   }
 
   return (
