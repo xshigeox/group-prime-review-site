@@ -88,68 +88,75 @@ const CharacterInfo = (props) => {
 
   return (
     <div>
-
       <div className="portfolio-resume row">
-
         <div className="large-4 columns">
           <div className="portfolio-resume-wrapper">
-            <img className="portfolio-resume-headshot" src={imgUrl} alt={name}/>
-            <h3 className="portfolio-resume-header">{name} ({alias})</h3>
+            <img
+              className="portfolio-resume-headshot"
+              src={imgUrl}
+              alt={name}
+            />
+            <h3 className="portfolio-resume-header">
+              {name} ({alias})
+            </h3>
           </div>
         </div>
 
         <div className="large-4 columns">
           <div className="portfolio-resume-wrapper-recharts">
             <h3 class="portfolio-resume-header">Stats</h3>
-            <RadarChart outerRadius={90} width={400} height={250} data={props.data}>
+            <RadarChart
+              outerRadius={90}
+              width={400}
+              height={250}
+              data={props.data}
+            >
               <PolarGrid />
-                <PolarAngleAxis dataKey="subject" />
-                  <PolarRadiusAxis angle={30} domain={[0, 7]} />
-                    <Radar
-                      name={name}
-                      dataKey="A"
-                      stroke="#82ca9d"
-                      fill="#82ca9d"
-                      fillOpacity={0.6}
-                    />
-                    <Legend />
+              <PolarAngleAxis dataKey="subject" />
+              <PolarRadiusAxis angle={30} domain={[0, 7]} />
+              <Radar
+                name={name}
+                dataKey="A"
+                stroke="#82ca9d"
+                fill="#82ca9d"
+                fillOpacity={0.6}
+              />
+              <Legend />
             </RadarChart>
           </div>
-        
 
-        <div className="portfolio-resume-wrapper">
-          <div className="portfolio-resume-spacing">  
-            <p>
-              Height: {feet}' {inches}"
-            </p>
-            <p>Weight: {weight}lbs</p>
-            <p>Gender: {gender}</p>
-            <p>Eye Color: {eyeColor}</p>
-            <p>Hair Color: {hairColor}</p>
+          <div className="portfolio-resume-wrapper">
+            <div className="portfolio-resume-spacing">
+              <p>
+                Height: {feet}' {inches}"
+              </p>
+              <p>Weight: {weight}lbs</p>
+              <p>Gender: {gender}</p>
+              <p>Eye Color: {eyeColor}</p>
+              <p>Hair Color: {hairColor}</p>
+            </div>
           </div>
         </div>
-      </div>
- 
+
         <div className="large-4 columns">
           <div className="portfolio-resume-wrapper">
-          <h3 className="portfolio-resume-header">Bio</h3>
+            <h3 className="portfolio-resume-header">Bio</h3>
             <div className="portfolio-resume-spacing-bio">
               <p>{bio}</p>
             </div>
           </div>
         </div>
-
       </div>
-            
+
       <div>
         <button
           type="button"
           className="button hollow topbar-responsive-button"
           onClick={handleClick}
-          >
+        >
           Add Review
-          </button>
-        </div>
+        </button>
+      </div>
 
       <div>
         <NewReviewForm
@@ -159,14 +166,10 @@ const CharacterInfo = (props) => {
           submitted={submittedAlert}
         />
       </div>
-
       <div>
         <ReviewListContainer
           character={props.character}
           updateReviews={updateReviews}
-
-          />
-
           edited={editedAlert}
           deleted={deletedAlert}
         />
@@ -245,9 +248,7 @@ const CharacterInfo = (props) => {
             </Fragment>
           }
         />
-
       </div>
-
     </div>
   )
 }
