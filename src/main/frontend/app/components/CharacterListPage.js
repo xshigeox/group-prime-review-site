@@ -6,7 +6,6 @@ const CharacterListPage = (props) => {
 
   return (
     <div className="small-3 large-4 columns text-center">
-      {/*<div className="list-container">*/}
       <div className="show">
         <Link to={`/characters/${id}`}>
           <img
@@ -21,7 +20,6 @@ const CharacterListPage = (props) => {
           <p className="background">{name}</p>
         </Link>
       </div>
-      {/*</div>*/}
     </div>
   )
 }

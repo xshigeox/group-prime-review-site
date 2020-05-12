@@ -1,14 +1,26 @@
-import React from "react"
+import React, { useState } from "react"
+import EditReviewForm from "./EditReviewForm"
 
 const ReviewInfo = (props) => {
   const { review } = props.review
   const { name, imgUrl } = props.character
+  const [editReveal, setEditReveal] = useState(false)
 
   let date = new Date(props.review.timestamp).toLocaleDateString()
   let time = new Date(props.review.timestamp).toLocaleTimeString("en-US", {
     hour: "numeric",
     minute: "numeric",
   })
+
+  const handleClick = (event) => {
+    event.preventDefault()
+    setEditReveal(!editReveal)
+  }
+
+  const edited = () => {
+    setEditReveal(false)
+    props.edited()
+  }
 
   return (
     <div>
@@ -22,6 +34,9 @@ const ReviewInfo = (props) => {
               <div className="travel-feature-card-header-controls">
                 <span>{date} - </span>
                 <span>{time} </span>
+                <span onClick={handleClick}>
+                  <i className="fas fa-edit"></i>
+                </span>
                 <span onClick={props.delete}>
                   <i className="far fa-trash-alt"></i>
                 </span>
@@ -55,6 +70,14 @@ const ReviewInfo = (props) => {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+        <EditReviewForm
+          review={props.review}
+          formReveal={editReveal}
+          character={props.character}
+          edited={edited}
+        />
       </div>
     </div>
   )

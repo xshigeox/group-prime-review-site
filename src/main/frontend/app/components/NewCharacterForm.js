@@ -105,201 +105,203 @@ const NewCharacterForm = (props) => {
 
   if (!submitted) {
     return (
-      <form
-        autoComplete="off"
-        id="newCharacterForm"
-        className="callout form-format"
-        onSubmit={handleSubmit}
-      >
-        <h1>Add a new Character</h1>
-        <ErrorList errors={errors} />
+      <div className="form">
+        <form
+          autoComplete="off"
+          id="newCharacterForm"
+          className="callout form-format"
+          onSubmit={handleSubmit}
+        >
+          <h1>Add a new Character</h1>
+          <ErrorList errors={errors} />
 
-        <div>
-          <label htmlFor="name">Name: </label>
+          <div>
+            <label htmlFor="name">Name: </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              value={newCharacter.name}
+              onChange={handleInputChange}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="alias">Alias: </label>
+            <input
+              type="text"
+              id="alias"
+              name="alias"
+              value={newCharacter.alias}
+              onChange={handleInputChange}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="bio">Bio: </label>
+            <input
+              type="text"
+              id="bio"
+              name="bio"
+              value={newCharacter.bio}
+              onChange={handleInputChange}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="durability">Durability: </label>
+            <select
+              id="durability"
+              name="durability"
+              onChange={handleInputChange}
+              value={newCharacter.durability}
+            >
+              <option value="" />
+              {attributeOptions}
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="energy">Energy: </label>
+            <select
+              id="energy"
+              name="energy"
+              onChange={handleInputChange}
+              value={newCharacter.energy}
+            >
+              <option value="" />
+              {attributeOptions}
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="fightingSkills">Fighting Skills: </label>
+            <select
+              id="fightingSkills"
+              name="fightingSkills"
+              onChange={handleInputChange}
+              value={newCharacter.fightingSkills}
+            >
+              <option value="" />
+              {attributeOptions}
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="intelligence">Intelligence: </label>
+            <select
+              id="intelligence"
+              name="intelligence"
+              onChange={handleInputChange}
+              value={newCharacter.intelligence}
+            >
+              <option value="" />
+              {attributeOptions}
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="speed">Speed: </label>
+            <select
+              id="speed"
+              name="speed"
+              onChange={handleInputChange}
+              value={newCharacter.speed}
+            >
+              <option value="" />
+              {attributeOptions}
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="strength">Strength: </label>
+            <select
+              id="strength"
+              name="strength"
+              onChange={handleInputChange}
+              value={newCharacter.strength}
+            >
+              <option value="" />
+              {attributeOptions}
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="height">Height (Feet & Inches): </label>
+            <input
+              type="number"
+              step="0.01"
+              id="height"
+              name="height"
+              onChange={handleInputChange}
+              value={newCharacter.height}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="weight">Weight (lbs): </label>
+            <input
+              type="number"
+              id="weight"
+              name="weight"
+              value={newCharacter.weight}
+              onChange={handleInputChange}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="gender">Gender: </label>
+            <select
+              id="gender"
+              name="gender"
+              onChange={handleInputChange}
+              value={newCharacter.gender}
+            >
+              <option value="" />
+              {genderValues}
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="eyeColor">Eye Color: </label>
+            <input
+              type="text"
+              id="eyeColor"
+              name="eyeColor"
+              onChange={handleInputChange}
+              value={newCharacter.eyeColor}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="hairColor">Hair Color: </label>
+            <input
+              type="text"
+              id="hairColor"
+              name="hairColor"
+              onChange={handleInputChange}
+              value={newCharacter.hairColor}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="imgUrl">Image Url: </label>
+            <input
+              type="text"
+              id="imgUrl"
+              name="imgUrl"
+              onChange={handleInputChange}
+              value={newCharacter.imgUrl}
+            />
+          </div>
+
           <input
-            type="text"
-            id="name"
-            name="name"
-            value={newCharacter.name}
-            onChange={handleInputChange}
+            type="submit"
+            className="button hollow topbar-responsive-button"
+            value="submit"
           />
-        </div>
-
-        <div>
-          <label htmlFor="alias">Alias: </label>
-          <input
-            type="text"
-            id="alias"
-            name="alias"
-            value={newCharacter.alias}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="bio">Bio: </label>
-          <input
-            type="text"
-            id="bio"
-            name="bio"
-            value={newCharacter.bio}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="durability">Durability: </label>
-          <select
-            id="durability"
-            name="durability"
-            onChange={handleInputChange}
-            value={newCharacter.durability}
-          >
-            <option value="" />
-            {attributeOptions}
-          </select>
-        </div>
-
-        <div>
-          <label htmlFor="energy">Energy: </label>
-          <select
-            id="energy"
-            name="energy"
-            onChange={handleInputChange}
-            value={newCharacter.energy}
-          >
-            <option value="" />
-            {attributeOptions}
-          </select>
-        </div>
-
-        <div>
-          <label htmlFor="fightingSkills">Fighting Skills: </label>
-          <select
-            id="fightingSkills"
-            name="fightingSkills"
-            onChange={handleInputChange}
-            value={newCharacter.fightingSkills}
-          >
-            <option value="" />
-            {attributeOptions}
-          </select>
-        </div>
-
-        <div>
-          <label htmlFor="intelligence">Intelligence: </label>
-          <select
-            id="intelligence"
-            name="intelligence"
-            onChange={handleInputChange}
-            value={newCharacter.intelligence}
-          >
-            <option value="" />
-            {attributeOptions}
-          </select>
-        </div>
-
-        <div>
-          <label htmlFor="speed">Speed: </label>
-          <select
-            id="speed"
-            name="speed"
-            onChange={handleInputChange}
-            value={newCharacter.speed}
-          >
-            <option value="" />
-            {attributeOptions}
-          </select>
-        </div>
-
-        <div>
-          <label htmlFor="strength">Strength: </label>
-          <select
-            id="strength"
-            name="strength"
-            onChange={handleInputChange}
-            value={newCharacter.strength}
-          >
-            <option value="" />
-            {attributeOptions}
-          </select>
-        </div>
-
-        <div>
-          <label htmlFor="height">Height (Feet & Inches): </label>
-          <input
-            type="number"
-            step="0.01"
-            id="height"
-            name="height"
-            onChange={handleInputChange}
-            value={newCharacter.height}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="weight">Weight (lbs): </label>
-          <input
-            type="number"
-            id="weight"
-            name="weight"
-            value={newCharacter.weight}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="gender">Gender: </label>
-          <select
-            id="gender"
-            name="gender"
-            onChange={handleInputChange}
-            value={newCharacter.gender}
-          >
-            <option value="" />
-            {genderValues}
-          </select>
-        </div>
-
-        <div>
-          <label htmlFor="eyeColor">Eye Color: </label>
-          <input
-            type="text"
-            id="eyeColor"
-            name="eyeColor"
-            onChange={handleInputChange}
-            value={newCharacter.eyeColor}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="hairColor">Hair Color: </label>
-          <input
-            type="text"
-            id="hairColor"
-            name="hairColor"
-            onChange={handleInputChange}
-            value={newCharacter.hairColor}
-          />
-        </div>
-
-        <div>
-          <label htmlFor="imgUrl">Image Url: </label>
-          <input
-            type="text"
-            id="imgUrl"
-            name="imgUrl"
-            onChange={handleInputChange}
-            value={newCharacter.imgUrl}
-          />
-        </div>
-
-        <input
-          type="submit"
-          className="button hollow topbar-responsive-button"
-          value="submit"
-        />
-      </form>
+        </form>
+      </div>
     )
   } else {
     return (

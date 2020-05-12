@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, Fragment } from "react"
 import {
   RadarChart,
   PolarGrid,
@@ -9,10 +9,16 @@ import {
 } from "recharts"
 import NewReviewForm from "./NewReviewForm"
 import ReviewListContainer from "./ReviewListContainer"
+import Snackbar from "@material-ui/core/Snackbar"
+import IconButton from "@material-ui/core/IconButton"
+import CloseIcon from "@material-ui/icons/Close"
 
 const CharacterInfo = (props) => {
   const [formReveal, setFormReveal] = useState(false)
   const [update, setUpdate] = useState(false)
+  const [open, setOpen] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const [deleted, setDeleted] = useState(false)
   const {
     name,
     alias,
@@ -42,6 +48,42 @@ const CharacterInfo = (props) => {
     setUpdate(!update)
     setFormReveal(false)
     props.update()
+  }
+
+  const submittedAlert = () => {
+    props.update()
+    handleSubmittedAlert()
+  }
+
+  const editedAlert = () => {
+    props.update()
+    handleEditedAlert()
+  }
+
+  const deletedAlert = () => {
+    props.update()
+    handleDeletedAlert()
+  }
+
+  const handleEditedAlert = () => {
+    setOpen(true)
+  }
+
+  const handleSubmittedAlert = () => {
+    setSubmitted(true)
+  }
+
+  const handleDeletedAlert = () => {
+    setDeleted(true)
+  }
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return
+    }
+    setOpen(false)
+    setSubmitted(false)
+    setDeleted(false)
   }
 
   return (
@@ -114,6 +156,7 @@ const CharacterInfo = (props) => {
           character={props.character}
           formReveal={formReveal}
           updateReviews={updateReviews}
+          submitted={submittedAlert}
         />
       </div>
 
@@ -121,7 +164,88 @@ const CharacterInfo = (props) => {
         <ReviewListContainer
           character={props.character}
           updateReviews={updateReviews}
+
           />
+
+          edited={editedAlert}
+          deleted={deletedAlert}
+        />
+      </div>
+
+      <div className="success">
+        <Snackbar
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          open={open}
+          autoHideDuration={3000}
+          onClose={handleClose}
+          message="Review Edited!"
+          action={
+            <Fragment>
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleClose}
+              >
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </Fragment>
+          }
+        />
+      </div>
+
+      <div>
+        <Snackbar
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          open={submitted}
+          autoHideDuration={3000}
+          onClose={handleClose}
+          message="Review Submitted!"
+          action={
+            <Fragment>
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleClose}
+              >
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </Fragment>
+          }
+        />
+      </div>
+
+      <div>
+        <Snackbar
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          open={deleted}
+          autoHideDuration={3000}
+          onClose={handleClose}
+          message="Review deleted!"
+          action={
+            <Fragment>
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleClose}
+              >
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </Fragment>
+          }
+        />
+
       </div>
 
     </div>
