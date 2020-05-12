@@ -90,7 +90,7 @@ const CharacterInfo = (props) => {
  
         <div className="large-4 columns">
           <div className="portfolio-resume-wrapper">
-          <h3 class="portfolio-resume-header">Bio</h3>
+          <h3 className="portfolio-resume-header">Bio</h3>
             <div className="portfolio-resume-spacing">
               <p>{bio}</p>
             </div>
