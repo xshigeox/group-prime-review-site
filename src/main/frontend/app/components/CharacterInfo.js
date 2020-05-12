@@ -141,8 +141,6 @@ const CharacterInfo = (props) => {
     setConfirm(false)
   }
 
-  console.log(answer)
-
   return (
     <div>
       <div className="delete-button" onClick={handleCharacterEdit}>

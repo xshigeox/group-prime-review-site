@@ -9,6 +9,9 @@ const CharacterEditForm = (props) => {
   const [submitted, setSubmitted] = useState(false)
   const [toHome, setToHome] = useState(false)
 
+  console.log(editedCharacter)
+  console.log(props.character)
+
   const attributeValues = [1, 2, 3, 4, 5, 6, 7]
   const attributeOptions = attributeValues.map((value) => {
     return (
