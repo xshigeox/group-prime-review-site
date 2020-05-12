@@ -1,0 +1,60 @@
+@font-face {
+  font-family: "OPTIBankGothic-Light";
+  src: url("fonts/OPTIBankGothic-Light.otf") format("opentype");
+}
+
+.portfolio-resume-spacing {
+  margin-bottom: 2rem;
+}
+
+.portfolio-resume-spacing-bio{
+  margin-bottom: 2rem;
+  text-align: justify;
+}
+
+.portfolio-resume-wrapper {
+  padding: 2rem 4rem;
+  text-align: center;
+  color: white;
+  
+}
+
+
+.portfolio-resume-wrapper-recharts {
+  padding: 2rem 0rem;
+  text-align: center;
+  color: white;
+}
+
+.portfolio-resume-headshot {
+  margin-bottom: 2rem;
+  border-radius: 50%;
+  width: 250px;
+  height: 250px;
+}
+
+.portfolio-resume-header {
+  text-transform: uppercase;
+  padding-bottom: 1rem;
+  
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.portfolio-resume-contact-info {
+  margin-bottom: 0.75rem;
+}
+
+.portfolio-resume-contact-info a {
+  color: #0a0a0a;
+}
+
+.portfolio-resume-contact-info .fa {
+  font-size: 1.4rem;
+  padding-right: 0.8rem;
+  vertical-align: middle;
+  color: #0a0a0a;
+}
+
+
+
