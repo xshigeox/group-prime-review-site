@@ -6,6 +6,7 @@ const EditReviewForm = (props) => {
 
   const [errors, setErrors] = useState({})
 
+
   const attributeValues = [1, 2, 3, 4, 5]
   const attributeOptions = attributeValues.map((value) => {
     return (
@@ -53,6 +54,7 @@ const EditReviewForm = (props) => {
         .then((response) => {
           if (response.ok) {
             props.edited()
+            handleAlert()
           } else {
             let errorMessage = `${response.status} (${response.statusText})`
             throw new Error(errorMessage)
@@ -71,44 +73,46 @@ const EditReviewForm = (props) => {
 
   if (props.formReveal) {
     return (
-      <form
-        autoComplete="off"
-        id="newReviewForm"
-        className="callout form-format"
-        onSubmit={handleSubmit}
-      >
-        <h4>Review Marvel Character</h4>
-        <ErrorList errors={errors} />
+      <div>
+        <form
+          autoComplete="off"
+          id="newReviewForm"
+          className="callout form-format"
+          onSubmit={handleSubmit}
+        >
+          <h4>Review Marvel Character</h4>
+          <ErrorList errors={errors} />
 
-        <div>
-          <label htmlFor="rating">Rating</label>
-          <select
-            id="rating"
-            name="rating"
-            onChange={handleInputChange}
-            value={editedReview.rating}
-          >
-            <option value="" />
-            {attributeOptions}
-          </select>
-        </div>
+          <div>
+            <label htmlFor="rating">Rating</label>
+            <select
+              id="rating"
+              name="rating"
+              onChange={handleInputChange}
+              value={editedReview.rating}
+            >
+              <option value="" />
+              {attributeOptions}
+            </select>
+          </div>
 
-        <div>
-          <label htmlFor="review">Review</label>
-          <textarea
-            id="review"
-            name="review"
-            onChange={handleInputChange}
-            value={editedReview.review}
-          ></textarea>
-        </div>
+          <div>
+            <label htmlFor="review">Review</label>
+            <textarea
+              id="review"
+              name="review"
+              onChange={handleInputChange}
+              value={editedReview.review}
+            ></textarea>
+          </div>
 
-        <input
-          type="submit"
-          className="button hollow topbar-responsive-button"
-          value="submit"
-        />
-      </form>
+          <input
+            type="submit"
+            className="button hollow topbar-responsive-button"
+            value="submit"
+          />
+        </form>
+      </div>
     )
   } else {
     return ""

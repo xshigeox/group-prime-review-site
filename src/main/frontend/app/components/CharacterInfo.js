@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, Fragment } from "react"
 import {
   RadarChart,
   PolarGrid,
@@ -9,10 +9,14 @@ import {
 } from "recharts"
 import NewReviewForm from "./NewReviewForm"
 import ReviewListContainer from "./ReviewListContainer"
+import Snackbar from "@material-ui/core/Snackbar"
+import IconButton from "@material-ui/core/IconButton"
+import CloseIcon from "@material-ui/icons/Close"
 
 const CharacterInfo = (props) => {
   const [formReveal, setFormReveal] = useState(false)
   const [update, setUpdate] = useState(false)
+  const [open, setOpen] = useState(false)
   const {
     name,
     alias,
@@ -46,6 +50,18 @@ const CharacterInfo = (props) => {
 
   const edited = () => {
     props.update()
+    handleAlert()
+  }
+
+  const handleAlert = () => {
+    setOpen(true)
+  }
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return
+    }
+    setOpen(false)
   }
 
   return (
@@ -104,6 +120,31 @@ const CharacterInfo = (props) => {
           character={props.character}
           updateReviews={updateReviews}
           edited={edited}
+        />
+      </div>
+
+      <div>
+        <Snackbar
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+          open={open}
+          autoHideDuration={3000}
+          onClose={handleClose}
+          message="Review Edited!"
+          action={
+            <React.Fragment>
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleClose}
+              >
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </React.Fragment>
+          }
         />
       </div>
     </div>
