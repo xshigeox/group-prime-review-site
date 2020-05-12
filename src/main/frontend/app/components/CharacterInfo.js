@@ -46,48 +46,69 @@ const CharacterInfo = (props) => {
 
   return (
     <div>
-      <div>
-        <h1>
-          {name} - {alias}
-        </h1>
-        <p>{bio}</p>
-        <img src={imgUrl} alt={name} height="210" width="191" />
-      </div>
 
-      <div>
-        <p>
-          Height: {feet}' {inches}"
-        </p>
-        <p>Weight: {weight}lbs</p>
-        <p>Gender: {gender}</p>
-        <p>Eye Color: {eyeColor}</p>
-        <p>Hair Color: {hairColor}</p>
-      </div>
+      <div className="portfolio-resume row">
 
-      <div>
-        <RadarChart outerRadius={90} width={730} height={250} data={props.data}>
-          <PolarGrid />
-          <PolarAngleAxis dataKey="subject" />
-          <PolarRadiusAxis angle={30} domain={[0, 7]} />
-          <Radar
-            name={name}
-            dataKey="A"
-            stroke="#82ca9d"
-            fill="#82ca9d"
-            fillOpacity={0.6}
-          />
-          <Legend />
-        </RadarChart>
+        <div className="large-4 columns">
+          <div className="portfolio-resume-wrapper">
+            <img className="portfolio-resume-headshot" src={imgUrl} alt={name}/>
+            <h3 className="portfolio-resume-header">{name} ({alias})</h3>
+          </div>
+        </div>
+
+        <div className="large-4 columns">
+          <div className="portfolio-resume-wrapper-recharts">
+            <h3 class="portfolio-resume-header">Stats</h3>
+            <RadarChart outerRadius={90} width={400} height={250} data={props.data}>
+              <PolarGrid />
+                <PolarAngleAxis dataKey="subject" />
+                  <PolarRadiusAxis angle={30} domain={[0, 7]} />
+                    <Radar
+                      name={name}
+                      dataKey="A"
+                      stroke="#82ca9d"
+                      fill="#82ca9d"
+                      fillOpacity={0.6}
+                    />
+                    <Legend />
+            </RadarChart>
+          </div>
+        
+
+        <div className="portfolio-resume-wrapper">
+          <div className="portfolio-resume-spacing">  
+            <p>
+              Height: {feet}' {inches}"
+            </p>
+            <p>Weight: {weight}lbs</p>
+            <p>Gender: {gender}</p>
+            <p>Eye Color: {eyeColor}</p>
+            <p>Hair Color: {hairColor}</p>
+          </div>
+        </div>
       </div>
+ 
+        <div className="large-4 columns">
+          <div className="portfolio-resume-wrapper">
+          <h3 class="portfolio-resume-header">Bio</h3>
+            <div className="portfolio-resume-spacing">
+              <p>{bio}</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+            
       <div>
         <button
           type="button"
           className="button hollow topbar-responsive-button"
           onClick={handleClick}
-        >
+          >
           Add Review
-        </button>
-      </div>
+          </button>
+        </div>
+
       <div>
         <NewReviewForm
           character={props.character}
@@ -95,12 +116,14 @@ const CharacterInfo = (props) => {
           updateReviews={updateReviews}
         />
       </div>
+
       <div>
         <ReviewListContainer
           character={props.character}
           updateReviews={updateReviews}
-        />
+          />
       </div>
+
     </div>
   )
 }

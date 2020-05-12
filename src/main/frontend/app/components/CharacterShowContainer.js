@@ -43,8 +43,8 @@ const CharacterShowContainer = (props) => {
       fullMark: 7,
     },
     {
-      subject: "Fighting Skills",
-      A: character.fightingSkills,
+      subject: "Speed",
+      A: character.speed,
       fullMark: 7,
     },
     {
@@ -53,10 +53,11 @@ const CharacterShowContainer = (props) => {
       fullMark: 7,
     },
     {
-      subject: "Speed",
-      A: character.speed,
+      subject: "Fighting",
+      A: character.fightingSkills,
       fullMark: 7,
-    },
+    }
+    ,
     {
       subject: "Strength",
       A: character.strength,
