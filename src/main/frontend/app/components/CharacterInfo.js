@@ -9,9 +9,16 @@ import {
 } from "recharts"
 import NewReviewForm from "./NewReviewForm"
 import ReviewListContainer from "./ReviewListContainer"
+import EditCharacterForm from "./CharacterEditForm"
 import Snackbar from "@material-ui/core/Snackbar"
 import IconButton from "@material-ui/core/IconButton"
 import CloseIcon from "@material-ui/icons/Close"
+import Dialog from "@material-ui/core/Dialog"
+import DialogActions from "@material-ui/core/DialogActions"
+import DialogContent from "@material-ui/core/DialogContent"
+import DialogContentText from "@material-ui/core/DialogContentText"
+import DialogTitle from "@material-ui/core/DialogTitle"
+import Button from "@material-ui/core/Button"
 
 const CharacterInfo = (props) => {
   const [formReveal, setFormReveal] = useState(false)
@@ -19,7 +26,10 @@ const CharacterInfo = (props) => {
   const [open, setOpen] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [deleted, setDeleted] = useState(false)
+  const [characterEdit, setCharacterEdit] = useState(false)
+  const [editReveal, setEditReveal] = useState(false)
   const {
+    id,
     name,
     alias,
     bio,
@@ -65,6 +75,25 @@ const CharacterInfo = (props) => {
     handleDeletedAlert()
   }
 
+  const characterDelete = () => {
+    fetch(`/api/v1/characters/delete/${id}`, {
+      method: "DELETE",
+      body: JSON.stringify(props.character),
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => {
+        if (response.ok) {
+          props.update()
+          handleClose()
+          window.location.href = "/"
+        } else {
+          let errorMessage = `${response.status} (${response.statusText})`
+          throw new Error(errorMessage)
+        }
+      })
+      .catch((error) => console.error(`Error in fetch: ${error.message}`))
+  }
+
   const handleEditedAlert = () => {
     setOpen(true)
   }
@@ -77,6 +106,15 @@ const CharacterInfo = (props) => {
     setDeleted(true)
   }
 
+  const handleCharacterEdit = () => {
+    setCharacterEdit(true)
+  }
+
+  const editCharacter = () => {
+    setEditReveal(true)
+    handleClose()
+  }
+
   const handleClose = (event, reason) => {
     if (reason === "clickaway") {
       return
@@ -84,10 +122,22 @@ const CharacterInfo = (props) => {
     setOpen(false)
     setSubmitted(false)
     setDeleted(false)
+    setCharacterEdit(false)
   }
 
   return (
     <div>
+      <div className="delete-button" onClick={handleCharacterEdit}>
+        <i className="fas fa-skull fa-lg"></i>
+      </div>
+
+      <div>
+        <EditCharacterForm
+          formReveal={editReveal}
+          character={props.character}
+        />
+      </div>
+
       <div className="portfolio-resume row">
         <div className="large-4 columns">
           <div className="portfolio-resume-wrapper">
@@ -104,7 +154,7 @@ const CharacterInfo = (props) => {
 
         <div className="large-4 columns">
           <div className="portfolio-resume-wrapper-recharts">
-            <h3 class="portfolio-resume-header">Stats</h3>
+            <h3 className="portfolio-resume-header">Stats</h3>
             <RadarChart
               outerRadius={90}
               width={400}
@@ -173,6 +223,36 @@ const CharacterInfo = (props) => {
           edited={editedAlert}
           deleted={deletedAlert}
         />
+      </div>
+
+      <div>
+        <Dialog
+          open={characterEdit}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">
+            <i className="fas fa-skull fa-lg"></i>
+            {" Character options"}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              What would you like to do with this character?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button color="secondary" onClick={characterDelete}>
+              Delete
+            </Button>
+            <Button color="primary" onClick={editCharacter}>
+              Edit
+            </Button>
+            <Button color="primary" onClick={handleClose}>
+              Cancel
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
 
       <div className="success">
