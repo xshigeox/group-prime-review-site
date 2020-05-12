@@ -158,7 +158,7 @@ const CharacterInfo = (props) => {
           onClose={handleClose}
           message="Review Edited!"
           action={
-            <React.Fragment>
+            <Fragment>
               <IconButton
                 size="small"
                 aria-label="close"
@@ -167,7 +167,7 @@ const CharacterInfo = (props) => {
               >
                 <CloseIcon fontSize="small" />
               </IconButton>
-            </React.Fragment>
+            </Fragment>
           }
         />
       </div>
@@ -183,7 +183,7 @@ const CharacterInfo = (props) => {
           onClose={handleClose}
           message="Review Submitted!"
           action={
-            <React.Fragment>
+            <Fragment>
               <IconButton
                 size="small"
                 aria-label="close"
@@ -192,7 +192,7 @@ const CharacterInfo = (props) => {
               >
                 <CloseIcon fontSize="small" />
               </IconButton>
-            </React.Fragment>
+            </Fragment>
           }
         />
       </div>
@@ -208,7 +208,7 @@ const CharacterInfo = (props) => {
           onClose={handleClose}
           message="Review deleted!"
           action={
-            <React.Fragment>
+            <Fragment>
               <IconButton
                 size="small"
                 aria-label="close"
@@ -217,7 +217,7 @@ const CharacterInfo = (props) => {
               >
                 <CloseIcon fontSize="small" />
               </IconButton>
-            </React.Fragment>
+            </Fragment>
           }
         />
       </div>
