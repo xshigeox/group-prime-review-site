@@ -28,6 +28,8 @@ const CharacterInfo = (props) => {
   const [deleted, setDeleted] = useState(false)
   const [characterEdit, setCharacterEdit] = useState(false)
   const [editReveal, setEditReveal] = useState(false)
+  const [confirm, setConfirm] = useState(false)
+
   const {
     id,
     name,
@@ -75,23 +77,36 @@ const CharacterInfo = (props) => {
     handleDeletedAlert()
   }
 
-  const characterDelete = () => {
-    fetch(`/api/v1/characters/delete/${id}`, {
-      method: "DELETE",
-      body: JSON.stringify(props.character),
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((response) => {
-        if (response.ok) {
-          props.update()
-          handleClose()
-          window.location.href = "/"
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`
-          throw new Error(errorMessage)
-        }
+  let answer = false
+
+  const cancel = () => {
+    handleClose()
+  }
+
+  const confirmDelete = () => {
+    answer = true
+    if (answer) {
+      fetch(`/api/v1/characters/delete/${id}`, {
+        method: "DELETE",
+        body: JSON.stringify(props.character),
+        headers: { "Content-Type": "application/json" },
       })
-      .catch((error) => console.error(`Error in fetch: ${error.message}`))
+        .then((response) => {
+          if (response.ok) {
+            props.update()
+            handleClose()
+            window.location.href = "/"
+          } else {
+            let errorMessage = `${response.status} (${response.statusText})`
+            throw new Error(errorMessage)
+          }
+        })
+        .catch((error) => console.error(`Error in fetch: ${error.message}`))
+    }
+  }
+
+  const characterDelete = () => {
+    setConfirm(true)
   }
 
   const handleEditedAlert = () => {
@@ -123,7 +138,10 @@ const CharacterInfo = (props) => {
     setSubmitted(false)
     setDeleted(false)
     setCharacterEdit(false)
+    setConfirm(false)
   }
+
+  console.log(answer)
 
   return (
     <div>
@@ -223,6 +241,30 @@ const CharacterInfo = (props) => {
           edited={editedAlert}
           deleted={deletedAlert}
         />
+      </div>
+
+      <div>
+        <Dialog
+          open={confirm}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{"Delete Review"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              Are you sure you want to delete this review?
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button color="primary" onClick={cancel}>
+              No
+            </Button>
+            <Button color="primary" onClick={confirmDelete}>
+              Yes
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
 
       <div>
