@@ -147,11 +147,11 @@ const CharacterInfo = (props) => {
         />
       </div>
 
-      <div>
+      <div className="success">
         <Snackbar
           anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
+            vertical: "top",
+            horizontal: "right",
           }}
           open={open}
           autoHideDuration={3000}
@@ -175,8 +175,8 @@ const CharacterInfo = (props) => {
       <div>
         <Snackbar
           anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
+            vertical: "top",
+            horizontal: "right",
           }}
           open={submitted}
           autoHideDuration={3000}
@@ -200,8 +200,8 @@ const CharacterInfo = (props) => {
       <div>
         <Snackbar
           anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
+            vertical: "top",
+            horizontal: "right",
           }}
           open={deleted}
           autoHideDuration={3000}

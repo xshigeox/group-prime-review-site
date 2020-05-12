@@ -6,7 +6,6 @@ const EditReviewForm = (props) => {
 
   const [errors, setErrors] = useState({})
 
-
   const attributeValues = [1, 2, 3, 4, 5]
   const attributeOptions = attributeValues.map((value) => {
     return (
@@ -54,7 +53,6 @@ const EditReviewForm = (props) => {
         .then((response) => {
           if (response.ok) {
             props.edited()
-            handleAlert()
           } else {
             let errorMessage = `${response.status} (${response.statusText})`
             throw new Error(errorMessage)
