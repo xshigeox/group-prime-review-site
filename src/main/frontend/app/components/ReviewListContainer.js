@@ -70,7 +70,7 @@ const ReviewListContainer = (props) => {
           })
             .then((response) => {
               if (response.ok) {
-                props.updateReviews()
+                props.deleted()
               } else {
                 let errorMessage = `${response.status} (${response.statusText})`
                 throw new Error(errorMessage)

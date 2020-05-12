@@ -17,6 +17,8 @@ const CharacterInfo = (props) => {
   const [formReveal, setFormReveal] = useState(false)
   const [update, setUpdate] = useState(false)
   const [open, setOpen] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const [deleted, setDeleted] = useState(false)
   const {
     name,
     alias,
@@ -48,13 +50,31 @@ const CharacterInfo = (props) => {
     props.update()
   }
 
-  const edited = () => {
+  const submittedAlert = () => {
     props.update()
-    handleAlert()
+    handleSubmittedAlert()
   }
 
-  const handleAlert = () => {
+  const editedAlert = () => {
+    props.update()
+    handleEditedAlert()
+  }
+
+  const deletedAlert = () => {
+    props.update()
+    handleDeletedAlert()
+  }
+
+  const handleEditedAlert = () => {
     setOpen(true)
+  }
+
+  const handleSubmittedAlert = () => {
+    setSubmitted(true)
+  }
+
+  const handleDeletedAlert = () => {
+    setDeleted(true)
   }
 
   const handleClose = (event, reason) => {
@@ -62,6 +82,8 @@ const CharacterInfo = (props) => {
       return
     }
     setOpen(false)
+    setSubmitted(false)
+    setDeleted(false)
   }
 
   return (
@@ -113,13 +135,15 @@ const CharacterInfo = (props) => {
           character={props.character}
           formReveal={formReveal}
           updateReviews={updateReviews}
+          submitted={submittedAlert}
         />
       </div>
       <div>
         <ReviewListContainer
           character={props.character}
           updateReviews={updateReviews}
-          edited={edited}
+          edited={editedAlert}
+          deleted={deletedAlert}
         />
       </div>
 
@@ -133,6 +157,56 @@ const CharacterInfo = (props) => {
           autoHideDuration={3000}
           onClose={handleClose}
           message="Review Edited!"
+          action={
+            <React.Fragment>
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleClose}
+              >
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </React.Fragment>
+          }
+        />
+      </div>
+
+      <div>
+        <Snackbar
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+          open={submitted}
+          autoHideDuration={3000}
+          onClose={handleClose}
+          message="Review Submitted!"
+          action={
+            <React.Fragment>
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleClose}
+              >
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </React.Fragment>
+          }
+        />
+      </div>
+
+      <div>
+        <Snackbar
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "left",
+          }}
+          open={deleted}
+          autoHideDuration={3000}
+          onClose={handleClose}
+          message="Review deleted!"
           action={
             <React.Fragment>
               <IconButton
