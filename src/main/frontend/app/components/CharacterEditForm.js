@@ -9,6 +9,9 @@ const CharacterEditForm = (props) => {
 
   useEffect(() => {
     setEditedCharacter(props.character)
+    if (editedCharacter.gender) {
+      editedCharacter["gender"] = props.character.gender.toLowerCase()
+    }
   }, [props])
 
   const attributeValues = [1, 2, 3, 4, 5, 6, 7]
