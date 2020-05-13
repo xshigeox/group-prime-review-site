@@ -31,23 +31,30 @@ const CharacterEditForm = (props) => {
 
   const isValidForSubmission = () => {
     let submitErrors = {}
-    const requiredFields = [
-      "name",
-      "bio",
+    const requiredFields = ["name", "bio", "imgUrl"]
+    const requiredAttributes = [
       "durability",
       "energy",
       "fightingSkills",
       "intelligence",
       "speed",
       "strength",
-      "imgUrl",
     ]
 
     requiredFields.forEach((field) => {
-      if (editedCharacter[field] === "") {
+      if (editedCharacter[field].trim() === "") {
         submitErrors = {
           ...submitErrors,
           [field]: "is blank",
+        }
+      }
+    })
+
+    requiredAttributes.forEach((attribute) => {
+      if (editedCharacter[attribute] === "") {
+        submitErrors = {
+          ...submitErrors,
+          [attribute]: "is blank",
         }
       }
     })

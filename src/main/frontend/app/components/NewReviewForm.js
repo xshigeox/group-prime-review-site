@@ -21,16 +21,19 @@ const NewReviewForm = (props) => {
 
   const isValidForSubmission = () => {
     let submitErrors = {}
-    const requiredFields = ["rating", "review"]
-
-    requiredFields.forEach((field) => {
-      if (newReview[field].trim() === "") {
-        submitErrors = {
-          ...submitErrors,
-          [field]: "is blank",
-        }
+    if (newReview["rating"] === "") {
+      submitErrors = {
+        ...submitErrors,
+        ["rating"]: "is blank",
       }
-    })
+    }
+
+    if (newReview["review"].trim() === "") {
+      submitErrors = {
+        ...submitErrors,
+        ["review"]: "is blank",
+      }
+    }
 
     setErrors(submitErrors)
     return _.isEmpty(submitErrors)
