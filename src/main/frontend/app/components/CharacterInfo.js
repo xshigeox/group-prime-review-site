@@ -19,6 +19,7 @@ import DialogContent from "@material-ui/core/DialogContent"
 import DialogContentText from "@material-ui/core/DialogContentText"
 import DialogTitle from "@material-ui/core/DialogTitle"
 import Button from "@material-ui/core/Button"
+import { SnackbarContent } from "@material-ui/core"
 
 const CharacterInfo = (props) => {
   const [formReveal, setFormReveal] = useState(false)
@@ -29,6 +30,7 @@ const CharacterInfo = (props) => {
   const [characterEdit, setCharacterEdit] = useState(false)
   const [editReveal, setEditReveal] = useState(false)
   const [confirm, setConfirm] = useState(false)
+  const [characterUpdated, setCharacterUpdated] = useState(false)
 
   const {
     id,
@@ -58,6 +60,7 @@ const CharacterInfo = (props) => {
 
   const updateCharacter = () => {
     setEditReveal(false)
+    setCharacterUpdated(true)
     props.update()
   }
 
@@ -144,6 +147,7 @@ const CharacterInfo = (props) => {
     setDeleted(false)
     setCharacterEdit(false)
     setConfirm(false)
+    setCharacterUpdated(false)
   }
 
   return (
@@ -361,6 +365,31 @@ const CharacterInfo = (props) => {
           autoHideDuration={3000}
           onClose={handleClose}
           message="Review deleted!"
+          action={
+            <Fragment>
+              <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleClose}
+              >
+                <CloseIcon fontSize="small" />
+              </IconButton>
+            </Fragment>
+          }
+        />
+      </div>
+
+      <div>
+        <Snackbar
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+          open={characterUpdated}
+          autoHideDuration={3000}
+          onClose={handleClose}
+          message={"Character Updated!"}
           action={
             <Fragment>
               <IconButton

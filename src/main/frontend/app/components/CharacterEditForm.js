@@ -44,7 +44,7 @@ const CharacterEditForm = (props) => {
     ]
 
     requiredFields.forEach((field) => {
-      if (editedCharacter[field].trim() === "") {
+      if (editedCharacter[field] === "") {
         submitErrors = {
           ...submitErrors,
           [field]: "is blank",
