@@ -45,16 +45,14 @@ const NewCharacterForm = (props) => {
 
   const isValidForSubmission = () => {
     let submitErrors = {}
-    const requiredFields = [
-      "name",
-      "bio",
+    const requiredFields = ["name", "bio", "imgUrl"]
+    const requiredAttributes = [
       "durability",
       "energy",
       "fightingSkills",
       "intelligence",
       "speed",
       "strength",
-      "imgUrl",
     ]
 
     requiredFields.forEach((field) => {
@@ -62,6 +60,15 @@ const NewCharacterForm = (props) => {
         submitErrors = {
           ...submitErrors,
           [field]: "is blank",
+        }
+      }
+    })
+
+    requiredAttributes.forEach((attribute) => {
+      if (newCharacter[attribute] === "") {
+        submitErrors = {
+          ...submitErrors,
+          [attribute]: "is blank",
         }
       }
     })
