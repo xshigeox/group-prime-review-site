@@ -58,7 +58,6 @@ const CharacterEditForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    debugger
 
     if (editedCharacter.alias === "") {
       editedCharacter["alias"] = "Unknown"

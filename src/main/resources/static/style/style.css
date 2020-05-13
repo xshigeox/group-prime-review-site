@@ -313,6 +313,9 @@ form#newCharacterForm {
   display: inline-block;
   text-align: center;
 }
+form#newReviewForm {
+  background-color: rgba(255, 255, 255, 0.5);
+}
 
 h1 {
   font-family: "OPTIBankGothic-Light";

@@ -71,7 +71,7 @@ const EditReviewForm = (props) => {
 
   if (props.formReveal) {
     return (
-      <div>
+      <div className="form">
         <form
           autoComplete="off"
           id="newReviewForm"

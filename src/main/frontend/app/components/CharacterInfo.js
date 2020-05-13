@@ -258,10 +258,15 @@ const CharacterInfo = (props) => {
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{"Delete Review"}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">
+            {"Delete Character"}
+          </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              Are you sure you want to delete this review?
+              <span>
+                <i className="fas fa-skull fa-2x"></i>Are you sure you want to
+                delete this character?
+              </span>
             </DialogContentText>
           </DialogContent>
           <DialogActions>
