@@ -2,6 +2,7 @@ package com.launchacademy.giantleap.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -31,7 +32,7 @@ public class MarvelCharacter {
   @Column(name = "id", nullable = false, unique = true)
   private Integer id;
 
-  @OneToMany(mappedBy = "marvelCharacter", fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "marvelCharacter", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
   @JsonIgnoreProperties("marvelCharacter")
   private List<Review> reviews;
 

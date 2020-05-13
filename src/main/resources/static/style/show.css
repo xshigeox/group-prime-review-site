@@ -7,7 +7,7 @@
   margin-bottom: 2rem;
 }
 
-.portfolio-resume-spacing-bio{
+.portfolio-resume-spacing-bio {
   margin-bottom: 2rem;
   text-align: justify;
 }
@@ -16,9 +16,7 @@
   padding: 2rem 4rem;
   text-align: center;
   color: white;
-  
 }
-
 
 .portfolio-resume-wrapper-recharts {
   padding: 2rem 0rem;
@@ -36,7 +34,7 @@
 .portfolio-resume-header {
   text-transform: uppercase;
   padding-bottom: 1rem;
-  
+
   font-weight: bold;
   margin-bottom: 1rem;
 }
@@ -56,5 +54,8 @@
   color: #0a0a0a;
 }
 
-
-
+.delete-button {
+  float: right;
+  margin-right: 15px;
+  margin-top: 15px;
+}

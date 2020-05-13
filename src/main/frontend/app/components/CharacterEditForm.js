@@ -1,29 +1,15 @@
-import React, { useState } from "react"
-import { Redirect } from "react-router-dom"
+import React, { useState, useEffect } from "react"
 import ErrorList from "./ErrorList"
 import _ from "lodash"
 
-const NewCharacterForm = (props) => {
-  const [newCharacter, setNewCharacter] = useState({
-    name: "",
-    alias: "",
-    bio: "",
-    durability: "",
-    energy: "",
-    fightingSkills: "",
-    intelligence: "",
-    speed: "",
-    strength: "",
-    height: "",
-    weight: "",
-    gender: "",
-    eyeColor: "",
-    hairColor: "",
-    imgUrl: "",
-  })
+const CharacterEditForm = (props) => {
+  const [editedCharacter, setEditedCharacter] = useState({})
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
-  const [toHome, setToHome] = useState(false)
+
+  useEffect(() => {
+    setEditedCharacter(props.character)
+  }, [props])
 
   const attributeValues = [1, 2, 3, 4, 5, 6, 7]
   const attributeOptions = attributeValues.map((value) => {
@@ -58,7 +44,7 @@ const NewCharacterForm = (props) => {
     ]
 
     requiredFields.forEach((field) => {
-      if (newCharacter[field].trim() === "") {
+      if (editedCharacter[field] === "") {
         submitErrors = {
           ...submitErrors,
           [field]: "is blank",
@@ -73,20 +59,21 @@ const NewCharacterForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault()
 
-    if (newCharacter.alias === "") {
-      newCharacter["alias"] = "Unknown"
+    if (editedCharacter.alias === "") {
+      editedCharacter["alias"] = "Unknown"
     }
 
     if (isValidForSubmission()) {
-      fetch("/api/v1/new", {
+      fetch(`/api/v1/edit_character/${props.character.id}`, {
         credentials: "same-origin",
-        method: "POST",
-        body: JSON.stringify(newCharacter),
+        method: "PUT",
+        body: JSON.stringify(editedCharacter),
         headers: { "Content-Type": "application/json" },
       })
         .then((response) => {
           if (response.ok) {
             setSubmitted(true)
+            props.update()
           } else {
             let errorMessage = `${response.status} (${response.statusText})`
             throw new Error(errorMessage)
@@ -97,13 +84,13 @@ const NewCharacterForm = (props) => {
   }
 
   const handleInputChange = (event) => {
-    setNewCharacter({
-      ...newCharacter,
+    setEditedCharacter({
+      ...editedCharacter,
       [event.currentTarget.id]: event.currentTarget.value,
     })
   }
 
-  if (!submitted) {
+  if (props.formReveal) {
     return (
       <div className="form">
         <form
@@ -112,7 +99,9 @@ const NewCharacterForm = (props) => {
           className="callout form-format"
           onSubmit={handleSubmit}
         >
-          <h1>Add a new Character</h1>
+          <h1>
+            Edit {props.character.name} ({props.character.alias})
+          </h1>
           <ErrorList errors={errors} />
 
           <div>
@@ -121,7 +110,7 @@ const NewCharacterForm = (props) => {
               type="text"
               id="name"
               name="name"
-              value={newCharacter.name}
+              value={editedCharacter.name}
               onChange={handleInputChange}
             />
           </div>
@@ -132,7 +121,7 @@ const NewCharacterForm = (props) => {
               type="text"
               id="alias"
               name="alias"
-              value={newCharacter.alias}
+              value={editedCharacter.alias}
               onChange={handleInputChange}
             />
           </div>
@@ -143,7 +132,7 @@ const NewCharacterForm = (props) => {
               type="text"
               id="bio"
               name="bio"
-              value={newCharacter.bio}
+              value={editedCharacter.bio}
               onChange={handleInputChange}
             />
           </div>
@@ -154,7 +143,7 @@ const NewCharacterForm = (props) => {
               id="durability"
               name="durability"
               onChange={handleInputChange}
-              value={newCharacter.durability}
+              value={editedCharacter.durability}
             >
               <option value="" />
               {attributeOptions}
@@ -167,7 +156,7 @@ const NewCharacterForm = (props) => {
               id="energy"
               name="energy"
               onChange={handleInputChange}
-              value={newCharacter.energy}
+              value={editedCharacter.energy}
             >
               <option value="" />
               {attributeOptions}
@@ -180,7 +169,7 @@ const NewCharacterForm = (props) => {
               id="fightingSkills"
               name="fightingSkills"
               onChange={handleInputChange}
-              value={newCharacter.fightingSkills}
+              value={editedCharacter.fightingSkills}
             >
               <option value="" />
               {attributeOptions}
@@ -193,7 +182,7 @@ const NewCharacterForm = (props) => {
               id="intelligence"
               name="intelligence"
               onChange={handleInputChange}
-              value={newCharacter.intelligence}
+              value={editedCharacter.intelligence}
             >
               <option value="" />
               {attributeOptions}
@@ -206,7 +195,7 @@ const NewCharacterForm = (props) => {
               id="speed"
               name="speed"
               onChange={handleInputChange}
-              value={newCharacter.speed}
+              value={editedCharacter.speed}
             >
               <option value="" />
               {attributeOptions}
@@ -219,7 +208,7 @@ const NewCharacterForm = (props) => {
               id="strength"
               name="strength"
               onChange={handleInputChange}
-              value={newCharacter.strength}
+              value={editedCharacter.strength}
             >
               <option value="" />
               {attributeOptions}
@@ -234,7 +223,7 @@ const NewCharacterForm = (props) => {
               id="height"
               name="height"
               onChange={handleInputChange}
-              value={newCharacter.height}
+              value={editedCharacter.height}
             />
           </div>
 
@@ -244,7 +233,7 @@ const NewCharacterForm = (props) => {
               type="number"
               id="weight"
               name="weight"
-              value={newCharacter.weight}
+              value={editedCharacter.weight}
               onChange={handleInputChange}
             />
           </div>
@@ -255,7 +244,7 @@ const NewCharacterForm = (props) => {
               id="gender"
               name="gender"
               onChange={handleInputChange}
-              value={newCharacter.gender}
+              value={editedCharacter.gender}
             >
               <option value="" />
               {genderValues}
@@ -269,7 +258,7 @@ const NewCharacterForm = (props) => {
               id="eyeColor"
               name="eyeColor"
               onChange={handleInputChange}
-              value={newCharacter.eyeColor}
+              value={editedCharacter.eyeColor}
             />
           </div>
 
@@ -280,7 +269,7 @@ const NewCharacterForm = (props) => {
               id="hairColor"
               name="hairColor"
               onChange={handleInputChange}
-              value={newCharacter.hairColor}
+              value={editedCharacter.hairColor}
             />
           </div>
 
@@ -291,7 +280,7 @@ const NewCharacterForm = (props) => {
               id="imgUrl"
               name="imgUrl"
               onChange={handleInputChange}
-              value={newCharacter.imgUrl}
+              value={editedCharacter.imgUrl}
             />
           </div>
 
@@ -304,16 +293,8 @@ const NewCharacterForm = (props) => {
       </div>
     )
   } else {
-    return (
-      <div>
-        <h1>Character Added!</h1>
-        <div id="hidden">
-          {setTimeout(() => setToHome(true), 3000)}
-          {toHome ? <Redirect to="/" /> : null}
-        </div>
-      </div>
-    )
+    return ""
   }
 }
 
-export default NewCharacterForm
+export default CharacterEditForm

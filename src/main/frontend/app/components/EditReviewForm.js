@@ -20,7 +20,7 @@ const EditReviewForm = (props) => {
     const requiredFields = ["rating", "review"]
 
     requiredFields.forEach((field) => {
-      if (editedReview[field].trim() === "") {
+      if (editedReview[field] === "") {
         submitErrors = {
           ...submitErrors,
           [field]: "is blank",
@@ -71,7 +71,7 @@ const EditReviewForm = (props) => {
 
   if (props.formReveal) {
     return (
-      <div>
+      <div className="form">
         <form
           autoComplete="off"
           id="newReviewForm"
