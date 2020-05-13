@@ -56,6 +56,11 @@ const CharacterInfo = (props) => {
     setFormReveal(!formReveal)
   }
 
+  const updateCharacter = () => {
+    setEditReveal(false)
+    props.update()
+  }
+
   const updateReviews = () => {
     setUpdate(!update)
     setFormReveal(false)
@@ -151,6 +156,7 @@ const CharacterInfo = (props) => {
         <EditCharacterForm
           formReveal={editReveal}
           character={props.character}
+          update={updateCharacter}
         />
       </div>
 

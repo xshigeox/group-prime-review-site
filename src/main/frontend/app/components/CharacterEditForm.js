@@ -1,16 +1,15 @@
-import React, { useState } from "react"
-import { Redirect } from "react-router-dom"
+import React, { useState, useEffect } from "react"
 import ErrorList from "./ErrorList"
 import _ from "lodash"
 
 const CharacterEditForm = (props) => {
-  const [editedCharacter, setEditedCharacter] = useState(props.character)
+  const [editedCharacter, setEditedCharacter] = useState({})
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
-  const [toHome, setToHome] = useState(false)
 
-  console.log(editedCharacter)
-  console.log(props.character)
+  useEffect(() => {
+    setEditedCharacter(props.character)
+  }, [props])
 
   const attributeValues = [1, 2, 3, 4, 5, 6, 7]
   const attributeOptions = attributeValues.map((value) => {
@@ -21,7 +20,7 @@ const CharacterEditForm = (props) => {
     )
   })
 
-  const genderList = ["male", "female"]
+  const genderList = ["male", "female", "non-binary"]
   const genderValues = genderList.map((gender) => {
     return (
       <option key={gender} value={gender}>
@@ -59,13 +58,14 @@ const CharacterEditForm = (props) => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
+    debugger
 
     if (editedCharacter.alias === "") {
       editedCharacter["alias"] = "Unknown"
     }
 
     if (isValidForSubmission()) {
-      fetch(`/api/v1/edit_character/${editedCharacter.id}`, {
+      fetch(`/api/v1/edit_character/${props.character.id}`, {
         credentials: "same-origin",
         method: "PUT",
         body: JSON.stringify(editedCharacter),
@@ -74,6 +74,7 @@ const CharacterEditForm = (props) => {
         .then((response) => {
           if (response.ok) {
             setSubmitted(true)
+            props.update()
           } else {
             let errorMessage = `${response.status} (${response.statusText})`
             throw new Error(errorMessage)

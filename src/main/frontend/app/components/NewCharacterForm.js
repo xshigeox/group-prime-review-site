@@ -34,7 +34,7 @@ const NewCharacterForm = (props) => {
     )
   })
 
-  const genderList = ["male", "female"]
+  const genderList = ["male", "female", "non-binary"]
   const genderValues = genderList.map((gender) => {
     return (
       <option key={gender} value={gender}>
