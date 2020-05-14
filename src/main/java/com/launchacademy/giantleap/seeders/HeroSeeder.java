@@ -1,23 +1,23 @@
 package com.launchacademy.giantleap.seeders;
 
-import com.launchacademy.giantleap.models.MarvelCharacter;
-import com.launchacademy.giantleap.repositories.MarvelCharacterRepository;
+import com.launchacademy.giantleap.models.Hero;
+import com.launchacademy.giantleap.repositories.HeroRepository;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MarvelCharacterSeeder {
+public class HeroSeeder {
 
   @Autowired
-  private MarvelCharacterRepository characterRepo;
+  private HeroRepository heroRepo;
 
   public void seed() {
-    List<MarvelCharacter> marvelCharacters = new ArrayList<>();
+    List<Hero> heroes = new ArrayList<>();
 
-    if (characterRepo.count() == 0) {
-      MarvelCharacter storm = new MarvelCharacter();
+    if (heroRepo.count() == 0) {
+      Hero storm = new Hero();
       storm.setName("Ororo Monroe");
       storm.setAlias("Storm");
       storm.setBio(
@@ -34,9 +34,9 @@ public class MarvelCharacterSeeder {
       storm.setEyeColor("Brown");
       storm.setHairColor("White");
       storm.setImgUrl("https://terrigen-cdn-dev.marvel.com/content/prod/1x/storm_apoc.jpg");
-      marvelCharacters.add(storm);
+      heroes.add(storm);
 
-      MarvelCharacter colleen = new MarvelCharacter();
+      Hero colleen = new Hero();
       colleen.setName("Colleen Wing");
       colleen.setAlias("Unknown");
       colleen.setBio(
@@ -53,9 +53,9 @@ public class MarvelCharacterSeeder {
       colleen.setEyeColor("Blue");
       colleen.setHairColor("Dark Red");
       colleen.setImgUrl("https://i.annihil.us/u/prod/marvel/i/mg/8/e0/52740e24bddb4.jpg");
-      marvelCharacters.add(colleen);
+      heroes.add(colleen);
 
-      MarvelCharacter jane = new MarvelCharacter();
+      Hero jane = new Hero();
       jane.setName("Jane Foster");
       jane.setAlias("Thor Goddess of Thunder");
       jane.setBio(
@@ -72,9 +72,9 @@ public class MarvelCharacterSeeder {
       jane.setEyeColor("Blue");
       jane.setHairColor("Blond");
       jane.setImgUrl("https://terrigen-cdn-dev.marvel.com/content/prod/1x/246tjf_com_crd_01.jpg");
-      marvelCharacters.add(jane);
+      heroes.add(jane);
 
-      MarvelCharacter doom = new MarvelCharacter();
+      Hero doom = new Hero();
       doom.setName("Victor Von Doom");
       doom.setAlias("Doctor Doom");
       doom.setBio(
@@ -91,9 +91,9 @@ public class MarvelCharacterSeeder {
       doom.setEyeColor("Brown");
       doom.setHairColor("Brown");
       doom.setImgUrl("https://terrigen-cdn-dev.marvel.com/content/prod/1x/057drd_com_crd_01.jpg");
-      marvelCharacters.add(doom);
+      heroes.add(doom);
 
-      MarvelCharacter pool = new MarvelCharacter();
+      Hero pool = new Hero();
       pool.setName("Wade Wilson");
       pool.setAlias("Deadpool");
       pool.setBio(
@@ -110,9 +110,9 @@ public class MarvelCharacterSeeder {
       pool.setEyeColor("Brown");
       pool.setHairColor("Bald, originally brown");
       pool.setImgUrl("https://terrigen-cdn-dev.marvel.com/content/prod/1x/036dpl_com_crd_01.jpg");
-      marvelCharacters.add(pool);
+      heroes.add(pool);
 
-      MarvelCharacter task = new MarvelCharacter();
+      Hero task = new Hero();
       task.setName("Anthony Masters");
       task.setAlias("Taskmaster");
       task.setBio(
@@ -129,9 +129,9 @@ public class MarvelCharacterSeeder {
       task.setEyeColor("Unrevealed");
       task.setHairColor("Brown");
       task.setImgUrl("https://terrigen-cdn-dev.marvel.com/content/prod/1x/173tsk_com_crd_02.jpg");
-      marvelCharacters.add(task);
+      heroes.add(task);
 
-      MarvelCharacter groot = new MarvelCharacter();
+      Hero groot = new Hero();
       groot.setName("Groot");
       groot.setAlias("Unknown");
       groot.setBio(
@@ -150,9 +150,9 @@ public class MarvelCharacterSeeder {
       groot
           .setImgUrl(
               "https://www.superherodb.com/pictures2/portraits/10/050/10017.jpg?v=1398979218");
-      marvelCharacters.add(groot);
+      heroes.add(groot);
 
-      MarvelCharacter wanda = new MarvelCharacter();
+      Hero wanda = new Hero();
       wanda.setName("Wanda Maximoff");
       wanda.setAlias("Scarlet Witch");
       wanda.setBio(
@@ -170,10 +170,10 @@ public class MarvelCharacterSeeder {
       wanda.setHairColor("Auburn");
       wanda.setImgUrl(
           "https://www.superherodb.com/pictures2/portraits/11/050/13086.jpg?v=1537276379");
-      marvelCharacters.add(wanda);
+      heroes.add(wanda);
 
-      for (MarvelCharacter marvelCharacter : marvelCharacters) {
-        characterRepo.save(marvelCharacter);
+      for (Hero hero : heroes) {
+        heroRepo.save(hero);
       }
     }
   }

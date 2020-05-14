@@ -1,8 +1,8 @@
 package com.launchacademy.giantleap.seeders;
 
-import com.launchacademy.giantleap.models.MarvelCharacter;
+import com.launchacademy.giantleap.models.Hero;
 import com.launchacademy.giantleap.models.Review;
-import com.launchacademy.giantleap.repositories.MarvelCharacterRepository;
+import com.launchacademy.giantleap.repositories.HeroRepository;
 import com.launchacademy.giantleap.repositories.ReviewRepository;
 import java.sql.Timestamp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,24 +15,24 @@ public class ReviewSeeder {
   private ReviewRepository reviewRepo;
 
   @Autowired
-  private MarvelCharacterRepository marvelCharacterRepo;
+  private HeroRepository marvelCharacterRepo;
 
   public void seed() {
-    Iterable<MarvelCharacter> characters = marvelCharacterRepo.findAll();
+    Iterable<Hero> characters = marvelCharacterRepo.findAll();
 
     if (reviewRepo.count() == 0) {
-      for (MarvelCharacter character : characters) {
+      for (Hero character : characters) {
         Review review = new Review();
         review.setRating(5);
         review.setReview("First 5 star rating for " + character.getName() + "!");
-        review.setMarvelCharacter(character);
+        review.setHero(character);
         review.setTimestamp(new Timestamp(System.currentTimeMillis()));
         reviewRepo.save(review);
 
         Review review1 = new Review();
         review1.setRating(2);
         review1.setReview("I don't like " + character.getName() + " ...");
-        review1.setMarvelCharacter(character);
+        review1.setHero(character);
         review1.setTimestamp(new Timestamp(System.currentTimeMillis()));
         reviewRepo.save(review1);
       }

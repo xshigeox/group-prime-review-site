@@ -12,7 +12,12 @@ const App = (props) => {
         <nav className="top-bar topbar-responsive">
           <div className="top-bar-title">
             <Link to="/" className="topbar-responsive-logo">
-              <strong>Marvel Reviews</strong>
+              <strong>
+                <span>
+                  <i class="fab fa-superpowers fa-lg" />
+                  <span> </span>Hero Reviews
+                </span>
+              </strong>
             </Link>
           </div>
           <div id="topbar-responsive" className="topbar-responsive-links">
