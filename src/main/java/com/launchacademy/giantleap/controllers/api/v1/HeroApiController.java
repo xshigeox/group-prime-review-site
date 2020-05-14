@@ -69,7 +69,13 @@ public class HeroApiController {
     return heroRepo.findAllByOrderByName();
   }
 
+  @GetMapping("/rankings")
+  public Iterable<Hero> getAllByRanking() {
+    return heroRepo.findAllByOrderByVoteDesc();
+  }
+
   @GetMapping("/characters/{id}")
+
   public Hero getSingleCharacter(@PathVariable Integer id) {
     return heroRepo.findById(id).orElseThrow(HeroNotFoundException::new);
   }
