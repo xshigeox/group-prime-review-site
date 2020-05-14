@@ -42,6 +42,7 @@ const CharacterInfo = (props) => {
     eyeColor,
     hairColor,
     imgUrl,
+    vote
   } = props.character
 
   let feet
@@ -112,6 +113,42 @@ const CharacterInfo = (props) => {
     }
   }
 
+  const upVote = () => {
+    fetch(`/api/v1/upvote/${id}`, {
+      credentials: "same-origin",
+      method:"PUT",
+      body: JSON.stringify(props.character),
+      headers: { "Content-Type": "application/json" },
+      })
+      .then((response) => {
+        if(response.ok) {
+        props.update()
+        } else {
+        let errorMessage = `${response.status} (${response.statusText})`
+        throw new Error(errorMessage)
+        }
+        })
+        .catch((error) => console.error(`Error in fetch: ${error.message}`))
+        }
+
+  const downVote = () => {
+    fetch(`/api/v1/downvote/${id}`, {
+      credentials: "same-origin",
+      method:"PUT",
+      body: JSON.stringify(props.character),
+      headers: { "Content-Type": "application/json" },
+      })
+      .then((response) => {
+        if(response.ok) {
+          props.update()
+        } else {
+        let errorMessage = `${response.status} (${response.statusText})`
+        throw new Error(errorMessage)
+        }
+        })
+        .catch((error) => console.error(`Error in fetch: ${error.message}`))
+        }
+
   const characterDelete = () => {
     setConfirm(true)
   }
@@ -152,7 +189,7 @@ const CharacterInfo = (props) => {
   return (
     <div>
       <div className="delete-button" onClick={handleCharacterEdit}>
-        <i className="fas fa-skull fa-lg"></i>
+        <i className="fas fa-skull fa-3x"></i>
       </div>
 
       <div>
@@ -174,7 +211,15 @@ const CharacterInfo = (props) => {
             <h3 className="portfolio-resume-header">
               {name} ({alias})
             </h3>
+            <h4>Popularity Results: {vote}</h4>
+              <div onClick={upVote}>
+              <i className="fas fa-heart fa-3x"></i>
+              </div>
+              <div onClick={downVote}>
+              <i className="fas fa-heart-broken fa-3x"></i>
+              </div>
           </div>
+           
         </div>
 
         <div className="large-4 columns">

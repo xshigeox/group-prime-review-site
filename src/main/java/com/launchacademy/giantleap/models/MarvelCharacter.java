@@ -95,4 +95,7 @@ public class MarvelCharacter {
 
   @Column(name = "hair_color")
   private String hairColor;
+
+  @Column(name = "vote")
+  private Integer vote = 0;
 }

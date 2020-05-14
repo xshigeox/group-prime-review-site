@@ -104,6 +104,55 @@ public class MarvelCharacterApiController {
       marvelCharacter.setEyeColor(newMarvelCharacter.getEyeColor());
       marvelCharacter.setHairColor(newMarvelCharacter.getHairColor());
       marvelCharacter.setImgUrl(newMarvelCharacter.getImgUrl());
+      marvelCharacter.setVote(newMarvelCharacter.getVote());
+      return marvelCharacterRepo.save(marvelCharacter);
+    }).orElseThrow(MarvelCharacterNotFoundException::new);
+  }
+
+  @PutMapping("/upvote/{id}")
+  public MarvelCharacter upvote(@RequestBody MarvelCharacter newMarvelCharacter, @PathVariable Integer id) {
+    return marvelCharacterRepo.findById(id).map(marvelCharacter -> {
+      marvelCharacter.setId(id);
+      marvelCharacter.setName(newMarvelCharacter.getName());
+      marvelCharacter.setAlias(newMarvelCharacter.getAlias());
+      marvelCharacter.setBio(newMarvelCharacter.getBio());
+      marvelCharacter.setDurability(newMarvelCharacter.getDurability());
+      marvelCharacter.setEnergy(newMarvelCharacter.getEnergy());
+      marvelCharacter.setFightingSkills(newMarvelCharacter.getFightingSkills());
+      marvelCharacter.setIntelligence(newMarvelCharacter.getIntelligence());
+      marvelCharacter.setSpeed(newMarvelCharacter.getSpeed());
+      marvelCharacter.setStrength(newMarvelCharacter.getStrength());
+      marvelCharacter.setHeight(newMarvelCharacter.getHeight());
+      marvelCharacter.setWeight(newMarvelCharacter.getWeight());
+      marvelCharacter.setGender(newMarvelCharacter.getGender());
+      marvelCharacter.setEyeColor(newMarvelCharacter.getEyeColor());
+      marvelCharacter.setHairColor(newMarvelCharacter.getHairColor());
+      marvelCharacter.setImgUrl(newMarvelCharacter.getImgUrl());
+      marvelCharacter.setVote(newMarvelCharacter.getVote() + 1);
+      return marvelCharacterRepo.save(marvelCharacter);
+    }).orElseThrow(MarvelCharacterNotFoundException::new);
+  }
+
+  @PutMapping("/downvote/{id}")
+  public MarvelCharacter downvote(@RequestBody MarvelCharacter newMarvelCharacter, @PathVariable Integer id) {
+    return marvelCharacterRepo.findById(id).map(marvelCharacter -> {
+      marvelCharacter.setId(id);
+      marvelCharacter.setName(newMarvelCharacter.getName());
+      marvelCharacter.setAlias(newMarvelCharacter.getAlias());
+      marvelCharacter.setBio(newMarvelCharacter.getBio());
+      marvelCharacter.setDurability(newMarvelCharacter.getDurability());
+      marvelCharacter.setEnergy(newMarvelCharacter.getEnergy());
+      marvelCharacter.setFightingSkills(newMarvelCharacter.getFightingSkills());
+      marvelCharacter.setIntelligence(newMarvelCharacter.getIntelligence());
+      marvelCharacter.setSpeed(newMarvelCharacter.getSpeed());
+      marvelCharacter.setStrength(newMarvelCharacter.getStrength());
+      marvelCharacter.setHeight(newMarvelCharacter.getHeight());
+      marvelCharacter.setWeight(newMarvelCharacter.getWeight());
+      marvelCharacter.setGender(newMarvelCharacter.getGender());
+      marvelCharacter.setEyeColor(newMarvelCharacter.getEyeColor());
+      marvelCharacter.setHairColor(newMarvelCharacter.getHairColor());
+      marvelCharacter.setImgUrl(newMarvelCharacter.getImgUrl());
+      marvelCharacter.setVote(newMarvelCharacter.getVote() - 1);
       return marvelCharacterRepo.save(marvelCharacter);
     }).orElseThrow(MarvelCharacterNotFoundException::new);
   }
