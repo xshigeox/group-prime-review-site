@@ -4,6 +4,7 @@ import CharacterListContainer from "./components/CharacterListContainer"
 import CharacterShowContainer from "./components/CharacterShowContainer"
 import NewCharacterForm from "./components/NewCharacterForm"
 import NewReviewForm from "./components/NewReviewForm"
+import RankingContainer from "./components/RankingContainer"
 
 const App = (props) => {
   return (
@@ -30,6 +31,16 @@ const App = (props) => {
                       className="button hollow topbar-responsive-button"
                     >
                       New
+                    </button>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/rankings">
+                    <button
+                      type="button"
+                      className="button hollow topbar-responsive-button"
+                    >
+                      Rankings
                     </button>
                   </Link>
                 </li>
@@ -61,6 +72,7 @@ const App = (props) => {
           />
           <Route exact path="/new" component={NewCharacterForm} />
           <Route exact path="/new_review" component={NewReviewForm} />
+          <Route exact path="/rankings" component={RankingContainer} />
         </Switch>
       </div>
     </BrowserRouter>

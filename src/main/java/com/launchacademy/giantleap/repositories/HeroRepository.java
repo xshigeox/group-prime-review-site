@@ -11,4 +11,6 @@ public interface HeroRepository extends
 
   public Iterable<Hero> findAllByOrderByName();
 
+  public Iterable<Hero> findAllByOrderByVoteDesc();
+
 }
