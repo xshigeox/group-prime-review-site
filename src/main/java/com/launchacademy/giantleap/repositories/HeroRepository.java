@@ -1,15 +1,14 @@
 package com.launchacademy.giantleap.repositories;
 
-import com.launchacademy.giantleap.models.MarvelCharacter;
+import com.launchacademy.giantleap.models.Hero;
 
-import java.util.List;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface MarvelCharacterRepository extends
-    PagingAndSortingRepository<MarvelCharacter, Integer> {
+public interface HeroRepository extends
+    PagingAndSortingRepository<Hero, Integer> {
 
-  public MarvelCharacter findByName(String name);
+  public Hero findByName(String name);
 
-  public Iterable<MarvelCharacter> findAllByOrderByName();
+  public Iterable<Hero> findAllByOrderByName();
 
 }

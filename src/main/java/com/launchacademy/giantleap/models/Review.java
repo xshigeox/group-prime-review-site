@@ -2,10 +2,8 @@ package com.launchacademy.giantleap.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.sql.Timestamp;
-import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,7 +32,7 @@ public class Review {
   @ManyToOne
   @JoinColumn(name = "character_id", nullable = false)
   @JsonIgnoreProperties("reviews")
-  private MarvelCharacter marvelCharacter;
+  private Hero hero;
 
   @Range(min = 1, max = 5)
   @Column(name = "rating", nullable = false)

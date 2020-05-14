@@ -20,20 +20,20 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.Range;
 
 @Entity
-@Table(name = "marvel_characters")
+@Table(name = "heroes")
 @Setter
 @Getter
 @NoArgsConstructor
-public class MarvelCharacter {
+public class Hero {
 
   @Id
-  @SequenceGenerator(name = "marvel_character_generator", sequenceName = "marvel_characters_id_seq", allocationSize = 1)
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "marvel_character_generator")
+  @SequenceGenerator(name = "hero_generator", sequenceName = "heroes_id_seq", allocationSize = 1)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hero_generator")
   @Column(name = "id", nullable = false, unique = true)
   private Integer id;
 
-  @OneToMany(mappedBy = "marvelCharacter", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-  @JsonIgnoreProperties("marvelCharacter")
+  @OneToMany(mappedBy = "hero", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+  @JsonIgnoreProperties("hero")
   private List<Review> reviews;
 
   @NotEmpty

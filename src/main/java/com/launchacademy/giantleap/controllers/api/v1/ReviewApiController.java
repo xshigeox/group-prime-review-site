@@ -1,8 +1,8 @@
 package com.launchacademy.giantleap.controllers.api.v1;
 
-import com.launchacademy.giantleap.models.MarvelCharacter;
+import com.launchacademy.giantleap.models.Hero;
 import com.launchacademy.giantleap.models.Review;
-import com.launchacademy.giantleap.repositories.MarvelCharacterRepository;
+import com.launchacademy.giantleap.repositories.HeroRepository;
 import com.launchacademy.giantleap.repositories.ReviewRepository;
 import java.util.List;
 import java.util.Optional;
@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,7 +31,7 @@ public class ReviewApiController {
   private ReviewRepository reviewRepo;
 
   @Autowired
-  private MarvelCharacterRepository marvelCharacterRepo;
+  private HeroRepository heroRepo;
 
   @NoArgsConstructor
   private class InvalidCharacterIdException extends RuntimeException {
@@ -73,13 +72,13 @@ public class ReviewApiController {
 
   @GetMapping("/api/v1/reviews/{id}")
   public List<Review> findReviewsByCharacter(@PathVariable Integer id) {
-    Optional<MarvelCharacter> character = marvelCharacterRepo.findById(id);
-    MarvelCharacter foundCharacter = new MarvelCharacter();
+    Optional<Hero> character = heroRepo.findById(id);
+    Hero foundCharacter = new Hero();
 
     if (character.isPresent()) {
       foundCharacter = character.get();
     }
-    return reviewRepo.findAllByMarvelCharacterOrderByIdDesc(foundCharacter);
+    return reviewRepo.findAllByHeroOrderByIdDesc(foundCharacter);
   }
 
   @PostMapping("/api/v1/new_review")

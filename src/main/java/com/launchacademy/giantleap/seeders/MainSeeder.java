@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class MainSeeder implements CommandLineRunner {
 
   @Autowired
-  private MarvelCharacterSeeder marvelCharacterSeeder;
+  private HeroSeeder heroSeeder;
 
   @Autowired
   private ReviewSeeder reviewSeeder;
@@ -16,7 +16,7 @@ public class MainSeeder implements CommandLineRunner {
   @Override
   public void run(String... args) throws Exception {
 
-    marvelCharacterSeeder.seed();
+    heroSeeder.seed();
     reviewSeeder.seed();
   }
 }

@@ -47,7 +47,7 @@ const NewReviewForm = (props) => {
     const formPayLoad = {
       rating: newReview.rating,
       review: newReview.review,
-      marvelCharacter: props.character,
+      hero: props.character,
     }
 
     if (isValidForSubmission()) {

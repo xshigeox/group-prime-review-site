@@ -1,2 +1,2 @@
-ALTER TABLE marvel_characters
+ALTER TABLE heroes
 ADD vote Integer DEFAULT 0;

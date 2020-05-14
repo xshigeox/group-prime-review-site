@@ -8,15 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class MarvelCharacterSeeder {
+public class HeroSeeder {
 
   @Autowired
-  private HeroRepository characterRepo;
+  private HeroRepository heroRepo;
 
   public void seed() {
     List<Hero> heroes = new ArrayList<>();
 
-    if (characterRepo.count() == 0) {
+    if (heroRepo.count() == 0) {
       Hero storm = new Hero();
       storm.setName("Ororo Monroe");
       storm.setAlias("Storm");
@@ -173,7 +173,7 @@ public class MarvelCharacterSeeder {
       heroes.add(wanda);
 
       for (Hero hero : heroes) {
-        characterRepo.save(hero);
+        heroRepo.save(hero);
       }
     }
   }

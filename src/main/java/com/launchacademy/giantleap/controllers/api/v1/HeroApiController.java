@@ -1,7 +1,7 @@
 package com.launchacademy.giantleap.controllers.api.v1;
 
-import com.launchacademy.giantleap.models.MarvelCharacter;
-import com.launchacademy.giantleap.repositories.MarvelCharacterRepository;
+import com.launchacademy.giantleap.models.Hero;
+import com.launchacademy.giantleap.repositories.HeroRepository;
 import com.launchacademy.giantleap.repositories.ReviewRepository;
 import javax.validation.Valid;
 import lombok.NoArgsConstructor;
@@ -24,146 +24,148 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1")
-public class MarvelCharacterApiController {
+public class HeroApiController {
 
   @Autowired
-  private MarvelCharacterRepository marvelCharacterRepo;
+  private HeroRepository heroRepo;
 
   @Autowired
   private ReviewRepository reviewRepo;
 
   @NoArgsConstructor
-  private class MarvelCharacterNotFoundException extends RuntimeException {
+  private class HeroNotFoundException extends RuntimeException {
 
   }
 
   @ControllerAdvice
-  private class MarvelCharacterNotFoundAdvice {
+  private class HeroNotFoundAdvice {
 
     @ResponseBody
-    @ExceptionHandler(MarvelCharacterNotFoundException.class)
+    @ExceptionHandler(HeroNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String marvelCharacterNotFound(MarvelCharacterNotFoundException ex) {
+    String marvelCharacterNotFound(HeroNotFoundException ex) {
       return ex.getMessage();
     }
   }
 
   @NoArgsConstructor
-  private class InvalidMarvelCharacterException extends RuntimeException {
+  private class InvalidHeroException extends RuntimeException {
 
   }
 
   @ControllerAdvice
-  private class InvalidMarvelCharacterAdvice {
+  private class InvalidHeroAdvice {
 
     @ResponseBody
-    @ExceptionHandler(InvalidMarvelCharacterException.class)
+    @ExceptionHandler(InvalidHeroException.class)
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
-    String invalidMarvelCharacter(InvalidMarvelCharacterException ex) {
+    String invalidMarvelCharacter(InvalidHeroException ex) {
       return ex.getMessage();
     }
   }
 
   @GetMapping("/characters")
-  public Iterable<MarvelCharacter> getAllCharacters() {
-    return marvelCharacterRepo.findAllByOrderByName();
+  public Iterable<Hero> getAllCharacters() {
+    return heroRepo.findAllByOrderByName();
   }
 
   @GetMapping("/characters/{id}")
-  public MarvelCharacter getSingleCharacter(@PathVariable Integer id) {
-    return marvelCharacterRepo.findById(id).orElseThrow(MarvelCharacterNotFoundException::new);
+  public Hero getSingleCharacter(@PathVariable Integer id) {
+    return heroRepo.findById(id).orElseThrow(HeroNotFoundException::new);
   }
 
   @PostMapping("/new")
-  public MarvelCharacter create(@RequestBody @Valid MarvelCharacter marvelCharacter,
+  public Hero create(@RequestBody @Valid Hero hero,
       BindingResult bindingResult) {
     if (bindingResult.hasErrors()) {
-      throw new InvalidMarvelCharacterException();
+      throw new InvalidHeroException();
     } else {
-      return marvelCharacterRepo.save(marvelCharacter);
+      return heroRepo.save(hero);
     }
   }
 
   @PutMapping("/edit_character/{id}")
-  public MarvelCharacter update(@RequestBody MarvelCharacter newMarvelCharacter,
+  public Hero update(@RequestBody Hero newHero,
       @PathVariable Integer id) {
-    return marvelCharacterRepo.findById(id).map(marvelCharacter -> {
-      marvelCharacter.setId(id);
-      marvelCharacter.setName(newMarvelCharacter.getName());
-      marvelCharacter.setAlias(newMarvelCharacter.getAlias());
-      marvelCharacter.setBio(newMarvelCharacter.getBio());
-      marvelCharacter.setDurability(newMarvelCharacter.getDurability());
-      marvelCharacter.setEnergy(newMarvelCharacter.getEnergy());
-      marvelCharacter.setFightingSkills(newMarvelCharacter.getFightingSkills());
-      marvelCharacter.setIntelligence(newMarvelCharacter.getIntelligence());
-      marvelCharacter.setSpeed(newMarvelCharacter.getSpeed());
-      marvelCharacter.setStrength(newMarvelCharacter.getStrength());
-      marvelCharacter.setHeight(newMarvelCharacter.getHeight());
-      marvelCharacter.setWeight(newMarvelCharacter.getWeight());
-      marvelCharacter.setGender(newMarvelCharacter.getGender());
-      marvelCharacter.setEyeColor(newMarvelCharacter.getEyeColor());
-      marvelCharacter.setHairColor(newMarvelCharacter.getHairColor());
-      marvelCharacter.setImgUrl(newMarvelCharacter.getImgUrl());
-      marvelCharacter.setVote(newMarvelCharacter.getVote());
-      return marvelCharacterRepo.save(marvelCharacter);
-    }).orElseThrow(MarvelCharacterNotFoundException::new);
+    return heroRepo.findById(id).map(hero -> {
+      hero.setId(id);
+      hero.setName(newHero.getName());
+      hero.setAlias(newHero.getAlias());
+      hero.setBio(newHero.getBio());
+      hero.setDurability(newHero.getDurability());
+      hero.setEnergy(newHero.getEnergy());
+      hero.setFightingSkills(newHero.getFightingSkills());
+      hero.setIntelligence(newHero.getIntelligence());
+      hero.setSpeed(newHero.getSpeed());
+      hero.setStrength(newHero.getStrength());
+      hero.setHeight(newHero.getHeight());
+      hero.setWeight(newHero.getWeight());
+      hero.setGender(newHero.getGender());
+      hero.setEyeColor(newHero.getEyeColor());
+      hero.setHairColor(newHero.getHairColor());
+      hero.setImgUrl(newHero.getImgUrl());
+      hero.setVote(newHero.getVote());
+      return heroRepo.save(hero);
+    }).orElseThrow(HeroNotFoundException::new);
   }
 
   @PutMapping("/upvote/{id}")
-  public MarvelCharacter upvote(@RequestBody MarvelCharacter newMarvelCharacter, @PathVariable Integer id) {
-    return marvelCharacterRepo.findById(id).map(marvelCharacter -> {
-      marvelCharacter.setId(id);
-      marvelCharacter.setName(newMarvelCharacter.getName());
-      marvelCharacter.setAlias(newMarvelCharacter.getAlias());
-      marvelCharacter.setBio(newMarvelCharacter.getBio());
-      marvelCharacter.setDurability(newMarvelCharacter.getDurability());
-      marvelCharacter.setEnergy(newMarvelCharacter.getEnergy());
-      marvelCharacter.setFightingSkills(newMarvelCharacter.getFightingSkills());
-      marvelCharacter.setIntelligence(newMarvelCharacter.getIntelligence());
-      marvelCharacter.setSpeed(newMarvelCharacter.getSpeed());
-      marvelCharacter.setStrength(newMarvelCharacter.getStrength());
-      marvelCharacter.setHeight(newMarvelCharacter.getHeight());
-      marvelCharacter.setWeight(newMarvelCharacter.getWeight());
-      marvelCharacter.setGender(newMarvelCharacter.getGender());
-      marvelCharacter.setEyeColor(newMarvelCharacter.getEyeColor());
-      marvelCharacter.setHairColor(newMarvelCharacter.getHairColor());
-      marvelCharacter.setImgUrl(newMarvelCharacter.getImgUrl());
-      marvelCharacter.setVote(newMarvelCharacter.getVote() + 1);
-      return marvelCharacterRepo.save(marvelCharacter);
-    }).orElseThrow(MarvelCharacterNotFoundException::new);
+  public Hero upvote(@RequestBody Hero newHero,
+      @PathVariable Integer id) {
+    return heroRepo.findById(id).map(hero -> {
+      hero.setId(id);
+      hero.setName(newHero.getName());
+      hero.setAlias(newHero.getAlias());
+      hero.setBio(newHero.getBio());
+      hero.setDurability(newHero.getDurability());
+      hero.setEnergy(newHero.getEnergy());
+      hero.setFightingSkills(newHero.getFightingSkills());
+      hero.setIntelligence(newHero.getIntelligence());
+      hero.setSpeed(newHero.getSpeed());
+      hero.setStrength(newHero.getStrength());
+      hero.setHeight(newHero.getHeight());
+      hero.setWeight(newHero.getWeight());
+      hero.setGender(newHero.getGender());
+      hero.setEyeColor(newHero.getEyeColor());
+      hero.setHairColor(newHero.getHairColor());
+      hero.setImgUrl(newHero.getImgUrl());
+      hero.setVote(newHero.getVote() + 1);
+      return heroRepo.save(hero);
+    }).orElseThrow(HeroNotFoundException::new);
   }
 
   @PutMapping("/downvote/{id}")
-  public MarvelCharacter downvote(@RequestBody MarvelCharacter newMarvelCharacter, @PathVariable Integer id) {
-    return marvelCharacterRepo.findById(id).map(marvelCharacter -> {
-      marvelCharacter.setId(id);
-      marvelCharacter.setName(newMarvelCharacter.getName());
-      marvelCharacter.setAlias(newMarvelCharacter.getAlias());
-      marvelCharacter.setBio(newMarvelCharacter.getBio());
-      marvelCharacter.setDurability(newMarvelCharacter.getDurability());
-      marvelCharacter.setEnergy(newMarvelCharacter.getEnergy());
-      marvelCharacter.setFightingSkills(newMarvelCharacter.getFightingSkills());
-      marvelCharacter.setIntelligence(newMarvelCharacter.getIntelligence());
-      marvelCharacter.setSpeed(newMarvelCharacter.getSpeed());
-      marvelCharacter.setStrength(newMarvelCharacter.getStrength());
-      marvelCharacter.setHeight(newMarvelCharacter.getHeight());
-      marvelCharacter.setWeight(newMarvelCharacter.getWeight());
-      marvelCharacter.setGender(newMarvelCharacter.getGender());
-      marvelCharacter.setEyeColor(newMarvelCharacter.getEyeColor());
-      marvelCharacter.setHairColor(newMarvelCharacter.getHairColor());
-      marvelCharacter.setImgUrl(newMarvelCharacter.getImgUrl());
-      marvelCharacter.setVote(newMarvelCharacter.getVote() - 1);
-      return marvelCharacterRepo.save(marvelCharacter);
-    }).orElseThrow(MarvelCharacterNotFoundException::new);
+  public Hero downvote(@RequestBody Hero newHero,
+      @PathVariable Integer id) {
+    return heroRepo.findById(id).map(hero -> {
+      hero.setId(id);
+      hero.setName(newHero.getName());
+      hero.setAlias(newHero.getAlias());
+      hero.setBio(newHero.getBio());
+      hero.setDurability(newHero.getDurability());
+      hero.setEnergy(newHero.getEnergy());
+      hero.setFightingSkills(newHero.getFightingSkills());
+      hero.setIntelligence(newHero.getIntelligence());
+      hero.setSpeed(newHero.getSpeed());
+      hero.setStrength(newHero.getStrength());
+      hero.setHeight(newHero.getHeight());
+      hero.setWeight(newHero.getWeight());
+      hero.setGender(newHero.getGender());
+      hero.setEyeColor(newHero.getEyeColor());
+      hero.setHairColor(newHero.getHairColor());
+      hero.setImgUrl(newHero.getImgUrl());
+      hero.setVote(newHero.getVote() - 1);
+      return heroRepo.save(hero);
+    }).orElseThrow(HeroNotFoundException::new);
   }
 
   @DeleteMapping("/characters/delete/{id}")
   public ResponseEntity<Void> deleteCharacterById(@PathVariable Integer id) {
     try {
 
-      marvelCharacterRepo.deleteById(id);
+      heroRepo.deleteById(id);
       return ResponseEntity.ok().build();
-    } catch (MarvelCharacterNotFoundException ex) {
+    } catch (HeroNotFoundException ex) {
       System.out.println(ex.getMessage());
       return ResponseEntity.notFound().build();
     }

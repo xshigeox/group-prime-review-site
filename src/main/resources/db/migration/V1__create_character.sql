@@ -1,4 +1,4 @@
-CREATE TABLE marvel_characters (
+CREATE TABLE heroes (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   alias VARCHAR(255) DEFAULT 'Unknown',
