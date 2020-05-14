@@ -147,7 +147,7 @@ const NewCharacterForm = (props) => {
             />
           </div>
 
-          <div className="form">
+          <div className="form-inputs">
             <TextField
               id="bio"
               name="bio"
@@ -158,7 +158,7 @@ const NewCharacterForm = (props) => {
             />
           </div>
 
-          <div className="form">
+          <div>
             <label htmlFor="durability">Durability: </label>
             <Slider
               defaultValue={2}
@@ -174,7 +174,7 @@ const NewCharacterForm = (props) => {
             />
           </div>
 
-          <div className="form">
+          <div>
             <label htmlFor="energy">Energy: </label>
             <Slider
               defaultValue={2}
@@ -190,7 +190,7 @@ const NewCharacterForm = (props) => {
             />
           </div>
 
-          <div className="form">
+          <div>
             <label htmlFor="fightingSkills">Fighting Skills: </label>
             <Slider
               defaultValue={2}
@@ -206,7 +206,7 @@ const NewCharacterForm = (props) => {
             />
           </div>
 
-          <div className="form">
+          <div>
             <label htmlFor="intelligence">Intelligence: </label>
             <Slider
               defaultValue={2}
@@ -222,7 +222,7 @@ const NewCharacterForm = (props) => {
             />
           </div>
 
-          <div className="form">
+          <div>
             <label htmlFor="speed">Speed: </label>
             <Slider
               defaultValue={2}
@@ -238,7 +238,7 @@ const NewCharacterForm = (props) => {
             />
           </div>
 
-          <div className="form">
+          <div>
             <label htmlFor="strength">Strength: </label>
             <Slider
               defaultValue={2}
@@ -254,7 +254,7 @@ const NewCharacterForm = (props) => {
             />
           </div>
 
-          <div className="form">
+          <div className="form-inputs">
             <TextField
               id="height"
               name="height"
@@ -267,7 +267,7 @@ const NewCharacterForm = (props) => {
             />
           </div>
 
-          <div className="form">
+          <div className="form-inputs">
             <TextField
               id="weight"
               name="weight"
@@ -279,7 +279,7 @@ const NewCharacterForm = (props) => {
             />
           </div>
 
-          <div className="form">
+          <div className="form-inputs">
             <FormControl className={classes.formControl} fullWidth>
               <InputLabel htmlFor="gender">Gender</InputLabel>
               <Select
@@ -300,7 +300,7 @@ const NewCharacterForm = (props) => {
             </FormControl>
           </div>
 
-          <div className="form">
+          <div className="form-inputs">
             <TextField
               id="eyeColor"
               name="eyeColor"
@@ -311,7 +311,7 @@ const NewCharacterForm = (props) => {
             />
           </div>
 
-          <div className="form">
+          <div className="form-inputs">
             <TextField
               id="hairColor"
               name="hairColor"
@@ -322,7 +322,7 @@ const NewCharacterForm = (props) => {
             />
           </div>
 
-          <div className="form">
+          <div className="form-inputs">
             <TextField
               id="imgUrl"
               name="imgUrl"
