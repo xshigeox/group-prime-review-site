@@ -39,24 +39,6 @@ const NewCharacterForm = (props) => {
 
   const classes = useStyles()
 
-  const attributeValues = [1, 2, 3, 4, 5, 6, 7]
-  const attributeOptions = attributeValues.map((value) => {
-    return (
-      <option key={value} value={value}>
-        {value}
-      </option>
-    )
-  })
-
-  const genderList = ["male", "female", "non-binary"]
-  const genderValues = genderList.map((gender) => {
-    return (
-      <option key={gender} value={gender}>
-        {_.startCase(gender)}
-      </option>
-    )
-  })
-
   const isValidForSubmission = () => {
     let submitErrors = {}
     const requiredFields = ["name", "bio", "imgUrl"]
