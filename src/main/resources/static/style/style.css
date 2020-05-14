@@ -326,3 +326,11 @@ h1 {
 label {
   font-weight: bold;
 }
+
+.form-inputs {
+  margin-bottom: 8px;
+}
+
+#form-submit-button {
+  margin-top: 10px;
+}

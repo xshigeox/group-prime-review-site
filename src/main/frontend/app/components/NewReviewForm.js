@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import ErrorList from "./ErrorList"
 import _ from "lodash"
+import Slider from "@material-ui/core/Slider"
+import TextField from "@material-ui/core/TextField"
 
 const NewReviewForm = (props) => {
   const [newReview, setNewReview] = useState({
@@ -79,6 +81,13 @@ const NewReviewForm = (props) => {
     })
   }
 
+  const handleChange = (event, value) => {
+    setNewReview({
+      ...newReview,
+      [event.currentTarget.id]: value,
+    })
+  }
+
   if (props.formReveal) {
     return (
       <form
@@ -87,30 +96,36 @@ const NewReviewForm = (props) => {
         className="callout form-format"
         onSubmit={handleSubmit}
       >
-        <h4>Review Marvel Character</h4>
+        <h4>Review {props.character.name}</h4>
         <ErrorList errors={errors} />
 
-        <div>
-          <label htmlFor="rating">Rating</label>
-          <select
+        <div className="form">
+          <label htmlFor="rating">Rating: </label>
+          <Slider
+            defaultValue={2}
+            aria-labelledby="discrete-slider"
+            valueLabelDisplay="auto"
+            onChange={handleChange}
             id="rating"
             name="rating"
-            onChange={handleInputChange}
-            value={newReview.rating}
-          >
-            <option value="" />
-            {attributeOptions}
-          </select>
+            step={1}
+            marks
+            min={1}
+            max={5}
+          />
         </div>
 
-        <div>
-          <label htmlFor="review">Review</label>
-          <textarea
+        <div className="form-inputs">
+          <TextField
             id="review"
             name="review"
+            label="Review"
+            color="primary"
             onChange={handleInputChange}
-            value={newReview.review}
-          ></textarea>
+            fullWidth
+            multiline
+            row={4}
+          />
         </div>
 
         <input

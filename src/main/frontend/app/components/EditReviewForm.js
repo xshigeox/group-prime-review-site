@@ -1,19 +1,13 @@
 import React, { useState } from "react"
 import ErrorList from "./ErrorList"
+import _ from "lodash"
+import Slider from "@material-ui/core/Slider"
+import TextField from "@material-ui/core/TextField"
 
 const EditReviewForm = (props) => {
   const [editedReview, setEditedReview] = useState(props.review)
 
   const [errors, setErrors] = useState({})
-
-  const attributeValues = [1, 2, 3, 4, 5]
-  const attributeOptions = attributeValues.map((value) => {
-    return (
-      <option key={value} value={value}>
-        {value}
-      </option>
-    )
-  })
 
   const isValidForSubmission = () => {
     let submitErrors = {}
@@ -72,6 +66,13 @@ const EditReviewForm = (props) => {
     })
   }
 
+  const handleChange = (event, value) => {
+    setEditedReview({
+      ...editedReview,
+      [event.currentTarget.id]: value,
+    })
+  }
+
   if (props.formReveal) {
     return (
       <div className="form">
@@ -81,30 +82,37 @@ const EditReviewForm = (props) => {
           className="callout form-format"
           onSubmit={handleSubmit}
         >
-          <h4>Review Marvel Character</h4>
+          <h4>Edit Review</h4>
           <ErrorList errors={errors} />
 
-          <div>
-            <label htmlFor="rating">Rating</label>
-            <select
+          <div className="form">
+            <label htmlFor="rating">Rating: </label>
+            <Slider
+              defaultValue={2}
+              aria-labelledby="discrete-slider"
+              valueLabelDisplay="auto"
+              onChange={handleChange}
               id="rating"
               name="rating"
-              onChange={handleInputChange}
-              value={editedReview.rating}
-            >
-              <option value="" />
-              {attributeOptions}
-            </select>
+              step={1}
+              marks
+              min={1}
+              max={5}
+            />
           </div>
 
-          <div>
-            <label htmlFor="review">Review</label>
-            <textarea
+          <div className="form-inputs">
+            <TextField
               id="review"
               name="review"
+              label="Review"
+              color="primary"
               onChange={handleInputChange}
-              value={editedReview.review}
-            ></textarea>
+              defaultValue={editedReview.review}
+              fullWidth
+              multiline
+              row={4}
+            />
           </div>
 
           <input
