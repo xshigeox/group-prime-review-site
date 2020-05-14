@@ -2,6 +2,12 @@ import React, { useState } from "react"
 import { Redirect } from "react-router-dom"
 import ErrorList from "./ErrorList"
 import _ from "lodash"
+import { makeStyles } from "@material-ui/core/styles"
+import Slider from "@material-ui/core/Slider"
+import TextField from "@material-ui/core/TextField"
+import Select from "@material-ui/core/Select"
+import InputLabel from "@material-ui/core/InputLabel"
+import FormControl from "@material-ui/core/FormControl"
 
 const NewCharacterForm = (props) => {
   const [newCharacter, setNewCharacter] = useState({
@@ -24,6 +30,14 @@ const NewCharacterForm = (props) => {
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
   const [toHome, setToHome] = useState(false)
+
+  const useStyles = makeStyles({
+    root: {
+      width: 300,
+    },
+  })
+
+  const classes = useStyles()
 
   const attributeValues = [1, 2, 3, 4, 5, 6, 7]
   const attributeOptions = attributeValues.map((value) => {
@@ -110,6 +124,13 @@ const NewCharacterForm = (props) => {
     })
   }
 
+  const handleChange = (event, value) => {
+    setNewCharacter({
+      ...newCharacter,
+      [event.currentTarget.id]: value,
+    })
+  }
+
   if (!submitted) {
     return (
       <div className="form">
@@ -122,183 +143,211 @@ const NewCharacterForm = (props) => {
           <h1>Add a new Character</h1>
           <ErrorList errors={errors} />
 
-          <div>
-            <label htmlFor="name">Name: </label>
-            <input
-              type="text"
+          <div className="form-inputs">
+            <TextField
               id="name"
               name="name"
-              value={newCharacter.name}
+              label="Name"
+              color="primary"
               onChange={handleInputChange}
+              fullWidth
             />
           </div>
 
-          <div>
-            <label htmlFor="alias">Alias: </label>
-            <input
-              type="text"
+          <div className="form-inputs">
+            <TextField
               id="alias"
               name="alias"
-              value={newCharacter.alias}
+              label="Alias"
+              color="primary"
               onChange={handleInputChange}
+              fullWidth
             />
           </div>
 
-          <div>
-            <label htmlFor="bio">Bio: </label>
-            <input
-              type="text"
+          <div className="form">
+            <TextField
               id="bio"
               name="bio"
-              value={newCharacter.bio}
+              label="Bio"
+              color="primary"
               onChange={handleInputChange}
+              fullWidth
             />
           </div>
 
-          <div>
+          <div className="form">
             <label htmlFor="durability">Durability: </label>
-            <select
+            <Slider
+              defaultValue={2}
+              aria-labelledby="discrete-slider"
+              valueLabelDisplay="auto"
+              onChange={handleChange}
               id="durability"
               name="durability"
-              onChange={handleInputChange}
-              value={newCharacter.durability}
-            >
-              <option value="" />
-              {attributeOptions}
-            </select>
+              step={1}
+              marks
+              min={1}
+              max={7}
+            />
           </div>
 
-          <div>
+          <div className="form">
             <label htmlFor="energy">Energy: </label>
-            <select
+            <Slider
+              defaultValue={2}
+              aria-labelledby="discrete-slider"
+              valueLabelDisplay="auto"
+              onChange={handleChange}
               id="energy"
               name="energy"
-              onChange={handleInputChange}
-              value={newCharacter.energy}
-            >
-              <option value="" />
-              {attributeOptions}
-            </select>
+              step={1}
+              marks
+              min={1}
+              max={7}
+            />
           </div>
 
-          <div>
+          <div className="form">
             <label htmlFor="fightingSkills">Fighting Skills: </label>
-            <select
+            <Slider
+              defaultValue={2}
+              aria-labelledby="discrete-slider"
+              valueLabelDisplay="auto"
+              onChange={handleChange}
               id="fightingSkills"
               name="fightingSkills"
-              onChange={handleInputChange}
-              value={newCharacter.fightingSkills}
-            >
-              <option value="" />
-              {attributeOptions}
-            </select>
+              step={1}
+              marks
+              min={1}
+              max={7}
+            />
           </div>
 
-          <div>
+          <div className="form">
             <label htmlFor="intelligence">Intelligence: </label>
-            <select
+            <Slider
+              defaultValue={2}
+              aria-labelledby="discrete-slider"
+              valueLabelDisplay="auto"
+              onChange={handleChange}
               id="intelligence"
               name="intelligence"
-              onChange={handleInputChange}
-              value={newCharacter.intelligence}
-            >
-              <option value="" />
-              {attributeOptions}
-            </select>
+              step={1}
+              marks
+              min={1}
+              max={7}
+            />
           </div>
 
-          <div>
+          <div className="form">
             <label htmlFor="speed">Speed: </label>
-            <select
+            <Slider
+              defaultValue={2}
+              aria-labelledby="discrete-slider"
+              valueLabelDisplay="auto"
+              onChange={handleChange}
               id="speed"
               name="speed"
-              onChange={handleInputChange}
-              value={newCharacter.speed}
-            >
-              <option value="" />
-              {attributeOptions}
-            </select>
+              step={1}
+              marks
+              min={1}
+              max={7}
+            />
           </div>
 
-          <div>
+          <div className="form">
             <label htmlFor="strength">Strength: </label>
-            <select
+            <Slider
+              defaultValue={2}
+              aria-labelledby="discrete-slider"
+              valueLabelDisplay="auto"
+              onChange={handleChange}
               id="strength"
               name="strength"
-              onChange={handleInputChange}
-              value={newCharacter.strength}
-            >
-              <option value="" />
-              {attributeOptions}
-            </select>
+              step={1}
+              marks
+              min={1}
+              max={7}
+            />
           </div>
 
-          <div>
-            <label htmlFor="height">Height (Feet & Inches): </label>
-            <input
-              type="number"
-              step="0.01"
+          <div className="form">
+            <TextField
               id="height"
               name="height"
+              label="Height (Feet & Inches)"
+              color="primary"
+              type="number"
+              inputProps={{ step: 0.01 }}
               onChange={handleInputChange}
-              value={newCharacter.height}
+              fullWidth
             />
           </div>
 
-          <div>
-            <label htmlFor="weight">Weight (lbs): </label>
-            <input
-              type="number"
+          <div className="form">
+            <TextField
               id="weight"
               name="weight"
-              value={newCharacter.weight}
+              label="Weight (lbs)"
+              color="primary"
+              type="number"
               onChange={handleInputChange}
+              fullWidth
             />
           </div>
 
-          <div>
-            <label htmlFor="gender">Gender: </label>
-            <select
-              id="gender"
-              name="gender"
-              onChange={handleInputChange}
-              value={newCharacter.gender}
-            >
-              <option value="" />
-              {genderValues}
-            </select>
+          <div className="form">
+            <FormControl className={classes.formControl} fullWidth>
+              <InputLabel htmlFor="gender">Gender</InputLabel>
+              <Select
+                native
+                value={newCharacter.gender}
+                onChange={handleInputChange}
+                inputProps={{
+                  name: "age",
+                  id: "gender",
+                }}
+                fullWidth
+              >
+                <option aria-label="None" value="" />
+                <option value={"male"}>Male</option>
+                <option value={"female"}>Female</option>
+                <option value={"non-binary"}>Non-Binary</option>
+              </Select>
+            </FormControl>
           </div>
 
-          <div>
-            <label htmlFor="eyeColor">Eye Color: </label>
-            <input
-              type="text"
+          <div className="form">
+            <TextField
               id="eyeColor"
               name="eyeColor"
+              label="Eye Color"
+              color="primary"
               onChange={handleInputChange}
-              value={newCharacter.eyeColor}
+              fullWidth
             />
           </div>
 
-          <div>
-            <label htmlFor="hairColor">Hair Color: </label>
-            <input
-              type="text"
+          <div className="form">
+            <TextField
               id="hairColor"
               name="hairColor"
+              label="Hair Color"
+              color="primary"
               onChange={handleInputChange}
-              value={newCharacter.hairColor}
+              fullWidth
             />
           </div>
 
-          <div>
-            <label htmlFor="imgUrl">Image Url: </label>
-            <input
-              type="text"
+          <div className="form">
+            <TextField
               id="imgUrl"
               name="imgUrl"
+              label="Image Url"
+              color="primary"
               onChange={handleInputChange}
-              value={newCharacter.imgUrl}
+              fullWidth
             />
           </div>
 
@@ -306,6 +355,7 @@ const NewCharacterForm = (props) => {
             type="submit"
             className="button hollow topbar-responsive-button"
             value="submit"
+            id="form-submit-button"
           />
         </form>
       </div>
