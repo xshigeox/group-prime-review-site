@@ -88,7 +88,7 @@ const EditReviewForm = (props) => {
           <div className="form">
             <label htmlFor="rating">Rating: </label>
             <Slider
-              defaultValue={2}
+              defaultValue={editedReview.rating}
               aria-labelledby="discrete-slider"
               valueLabelDisplay="auto"
               onChange={handleChange}
