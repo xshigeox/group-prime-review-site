@@ -305,6 +305,7 @@ body {
 
 /*form*/
 div.form {
+  font-family: "OPTIBankGothic-Light";
   text-align: center;
   margin-top: 10px;
 }
@@ -333,4 +334,14 @@ label {
 
 #form-submit-button {
   margin-top: 10px;
+}
+
+input#name,
+input#alias,
+input#bio,
+input#height,
+input#weight,
+input#eyeColor,
+input#hairColor {
+  font-family: "OPTIBankGothic-Light";
 }
