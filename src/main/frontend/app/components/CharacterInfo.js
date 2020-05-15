@@ -211,12 +211,14 @@ const CharacterInfo = (props) => {
             <h3 className="portfolio-resume-header">
               {name} ({alias})
             </h3>
-            <h4>Popularity Results: {vote}</h4>
-              <div onClick={upVote}>
-              <i className="fas fa-heart fa-3x"></i>
-              </div>
-              <div onClick={downVote}>
-              <i className="fas fa-heart-broken fa-3x"></i>
+            <h4>Popularity: {vote}</h4>
+              <div className="vote">
+                <span className="vote-icon" onClick={upVote}>
+                <i className="fas fa-heart fa-3x"></i>
+                </span>
+                <span className="vote-icon" onClick={downVote}>
+                <i className="fas fa-heart-broken fa-3x"></i>
+                </span>
               </div>
           </div>
            
