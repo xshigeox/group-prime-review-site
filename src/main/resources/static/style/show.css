@@ -13,7 +13,7 @@
 }
 
 .portfolio-resume-wrapper {
-  padding: 2rem 4rem;
+  padding: 2rem 2rem;
   text-align: center;
   color: white;
 }
@@ -27,8 +27,8 @@
 .portfolio-resume-headshot {
   margin-bottom: 2rem;
   border-radius: 50%;
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
 }
 
 .portfolio-resume-header {
@@ -61,6 +61,9 @@
 }
 
 .vote {
-  color:white;
-  align:center;
+  display: block;
+}
+
+span.vote-icon {
+  padding: 10px;
 }
