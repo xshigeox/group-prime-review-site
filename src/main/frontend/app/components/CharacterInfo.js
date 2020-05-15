@@ -212,13 +212,13 @@ const CharacterInfo = (props) => {
               {name} ({alias})
             </h3>
             <h4>Popularity: {vote}</h4>
-            <div className="vote">
-              <span className="vote-icon" onClick={upVote}>
-              <i className="fas fa-heart fa-3x"></i>
-              </span>
-              <span className="vote-icon" onClick={downVote}>
-              <i className="fas fa-heart-broken fa-3x"></i>
-              </span>
+              <div className="vote">
+                <span className="vote-icon" onClick={upVote}>
+                <i className="fas fa-heart fa-3x"></i>
+                </span>
+                <span className="vote-icon" onClick={downVote}>
+                <i className="fas fa-heart-broken fa-3x"></i>
+                </span>
               </div>
           </div>
            
