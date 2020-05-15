@@ -12,14 +12,7 @@ const NewReviewForm = (props) => {
 
   const [errors, setErrors] = useState({})
 
-  const attributeValues = [1, 2, 3, 4, 5]
-  const attributeOptions = attributeValues.map((value) => {
-    return (
-      <option key={value} value={value}>
-        {value}
-      </option>
-    )
-  })
+
 
   const isValidForSubmission = () => {
     let submitErrors = {}
